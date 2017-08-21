@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/user/perfil', 'UserController@index');
+Route::get('/user/create', 'UserController@create');
+Route::post('/user/store', 'UserController@store');
+//Route::get('/user/show/{id}', 'UserController@show');
