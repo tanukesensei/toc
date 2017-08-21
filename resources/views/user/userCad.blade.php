@@ -12,7 +12,7 @@
           <h3>Cadastro de Usuários</h3>
           <form action="/user/store" method="post" class="form-group">
 
-            <input type="hidden" name="_token" value="{{{ csrf_token() }}}">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
             <div class="form-group">
 
