@@ -9,19 +9,19 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-4 col-sm-offset-4">
-          <h3>Cadastro de Usuários</h3>
-          <form action="/user/store" method="post" class="form-group">
+          <h3>Edite suas informações</h3>
+          <form action="/user/update" method="post" class="form-group">
 
             <div class="form-group">
 
-              <input type="text" name="nome" placeholder="Nome" value="" class="form-control">
+              <input type="text" name="nome" placeholder="Nome" value="{{}}" class="form-control">
               <select class="form-control" name="genero">
                 <option value="" selected disabled hidden>Escolha seu Gênero</option>
                 <option value="F">Feminino</option>
                 <option value="M">Masculino</option>
                 <option value="O">Outro</option>
               </select>
-              <input type="text" name="datansacimento" placeholder="Data de Nascimento" value="" class="form-control">
+              <input type="text" name="datansacimento" placeholder="Data de Nascimento" value="{{}}" class="form-control">
               <input type="text" name="cidade" placeholder="Cidade" value="" class="form-control">
               <input type="text" name="estado" placeholder="Estado" value="" class="form-control">
               <input type="text" name="email" placeholder="E-mail" value="" class="form-control">
