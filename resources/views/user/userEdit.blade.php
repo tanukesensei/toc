@@ -15,11 +15,15 @@
 
             <input type="hidden" name="_token" value="{{csrf_token()}}">
 
-            <!--<div class="form-group">-->
-
               <input type="text" name="nome" placeholder="Nome" value="{{$u->nome}}" class="form-control">
+
               <select class="form-control" name="genero">
+                <?php if (!empty($u->genero)){ ?>
                 <option value="{{$u->genero}}" selected disabled hidden>{{$u->genero}}</option>
+                <?php } else { ?>
+                <option value="" selected disabled hidden>Escolha seu Gênero</option>
+                <?php } ?>
+
                 <option value="F">Feminino</option>
                 <option value="M">Masculino</option>
                 <option value="O">Outro</option>
@@ -30,7 +34,7 @@
               <input type="text" name="email" placeholder="E-mail" value="{{$u->email}}" class="form-control">
               <input type="text" name="username" placeholder="Nome de Usuário" value="{{$u->username}}" class="form-control">
               <button type="submit" class="btn btn-primary btn-block" name="button">Atualizar</button>
-            <!--</div>-->
+
           </form>
         </div>
       </div>

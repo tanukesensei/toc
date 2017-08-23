@@ -102,8 +102,9 @@ class UserController extends Controller
      * @param  \toc\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        return 'Destruido.';
+        User::find($id)->delete();
+        return redirect()->action('UserController@index');
     }
 }
