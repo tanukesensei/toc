@@ -10,25 +10,27 @@
       <div class="row">
         <div class="col-sm-4 col-sm-offset-4">
           <h3>Edite suas informações</h3>
-          <form action="/user/update" method="post" class="form-group">
+          <form action="{{action('UserController@update', $u->id)}}" method="post" class="form-group">
+            {!! method_field('put') !!}
 
-            <div class="form-group">
+            <input type="hidden" name="_token" value="{{csrf_token()}}">
 
-              <input type="text" name="nome" placeholder="Nome" value="{{}}" class="form-control">
+            <!--<div class="form-group">-->
+
+              <input type="text" name="nome" placeholder="Nome" value="{{$u->nome}}" class="form-control">
               <select class="form-control" name="genero">
-                <option value="" selected disabled hidden>Escolha seu Gênero</option>
+                <option value="{{$u->genero}}" selected disabled hidden>{{$u->genero}}</option>
                 <option value="F">Feminino</option>
                 <option value="M">Masculino</option>
                 <option value="O">Outro</option>
               </select>
-              <input type="text" name="datansacimento" placeholder="Data de Nascimento" value="{{}}" class="form-control">
-              <input type="text" name="cidade" placeholder="Cidade" value="" class="form-control">
-              <input type="text" name="estado" placeholder="Estado" value="" class="form-control">
-              <input type="text" name="email" placeholder="E-mail" value="" class="form-control">
-              <input type="text" name="username" placeholder="Nome de Usuário" value="" class="form-control">
-              <input type="password" name="senha" placeholder="Senha" value="" class="form-control">
-              <button type="submit" class="btn btn-primary btn-block" name="button">Cadastrar</button>
-            </div>
+              <input type="text" name="datanascimento" placeholder="Data de Nascimento" value="{{$u->datanascimento}}" class="form-control">
+              <input type="text" name="cidade" placeholder="Cidade" value="{{$u->cidade}}" class="form-control">
+              <input type="text" name="estado" placeholder="Estado" value="{{$u->estado}}" class="form-control">
+              <input type="text" name="email" placeholder="E-mail" value="{{$u->email}}" class="form-control">
+              <input type="text" name="username" placeholder="Nome de Usuário" value="{{$u->username}}" class="form-control">
+              <button type="submit" class="btn btn-primary btn-block" name="button">Atualizar</button>
+            <!--</div>-->
           </form>
         </div>
       </div>

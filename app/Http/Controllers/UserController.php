@@ -62,14 +62,9 @@ class UserController extends Controller
      * @param  \toc\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        $users = User::find($id);
-        if (empty($users)) {
-          return  "Usuário não cadastrado.";
-        }
-        return view('user.userEdit')->with('users', $users);
-
+        //
     }
 
     /**
@@ -78,9 +73,13 @@ class UserController extends Controller
      * @param  \toc\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        //
+        $users = User::find($id);
+        if (empty($users)) {
+          return  "Usuário não cadastrado.";
+        }
+        return view('user.userEdit')->with('u', $users);
     }
 
     /**
@@ -90,9 +89,11 @@ class UserController extends Controller
      * @param  \toc\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UserRequest $request, $id)
     {
-        //
+        $users = User::find($id);
+        $users->update($request->all());
+        return redirect()->action('UserController@index');
     }
 
     /**
@@ -103,6 +104,6 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        return 'Destruido.';
     }
 }
