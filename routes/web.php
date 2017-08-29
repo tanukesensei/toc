@@ -19,10 +19,10 @@ Route::get('/', function () {
 Route::get('/user/perfil', 'UserController@index');
 Route::get('/user/create', 'UserController@create');
 Route::post('/user/store', 'UserController@store');
-Route::get('/user/show/{id}', 'UserController@show');
-Route::get('/user/edit/{id}', 'UserController@edit');
-Route::put('/user/update/{id}', 'UserController@update');
-Route::get('user/destroy/{id}', 'UserController@destroy');
+Route::get('/user/show/{id}', 'UserController@show')->where('id', '[0-9]+');
+Route::get('/user/edit/{id}', 'UserController@edit')->where('id', '[0-9]+');
+Route::put('/user/update/{id}', 'UserController@update')->where('id', '[0-9]+');
+Route::get('user/destroy/{id}', 'UserController@destroy')->where('id', '[0-9]+');
 
 //Coleção rotas
-Route::get('colecao/create/{id}', 'ColecaoController@create');
+Route::get('colecao/create/{id}', 'ColecaoController@create')->where('id', '[0-9]+');
