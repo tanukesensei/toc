@@ -2,10 +2,10 @@
 
 namespace toc\Http\Controllers;
 
-use toc\User;
+use toc\User; // Model
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use toc\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\DB; // acesso ao sql
+use toc\Http\Requests\UserRequest; // Request
 
 class UserController extends Controller
 {
