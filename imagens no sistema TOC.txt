@@ -1,0 +1,4 @@
+para puxar imagens do sistema, usar assim:
+img src="{{ asset('imagens/usuarios/'.$u->imagem)}}" alt="{{$u->imagem}}">
+
+exemplo baseado no controller de usuários.
