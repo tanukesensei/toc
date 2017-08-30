@@ -41,14 +41,14 @@ class UserController extends Controller
     {
         /*
         $user = new User;
-        $user->nome = $request->nome;
+        $user->name = $request->name;
         $user->genero = $request->genero;
         $user->datanascimento = $request->datanascimento;
         $user->cidade = $request->cidade;
         $user->estado = $request->estado;
         $user->email = $request->email;
         $user->username = $request->username;
-        $user->senha = $request->senha;
+        $user->password = $request->password;
         $user->save();
         */
         User::create($request->all());

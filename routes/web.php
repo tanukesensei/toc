@@ -26,3 +26,6 @@ Route::get('user/destroy/{id}', 'UserController@destroy')->where('id', '[0-9]+')
 
 //Coleção rotas
 Route::get('colecao/create/{id}', 'ColecaoController@create')->where('id', '[0-9]+');
+
+Auth::routes();
+Route::get('/home', 'HomeController@index');

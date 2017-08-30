@@ -16,7 +16,7 @@
 
             <div class="form-group">
 
-              <input type="text" name="nome" placeholder="Nome" value="" class="form-control">
+              <input type="text" name="name" placeholder="Nome" value="" class="form-control">
               <select class="form-control" name="genero">
                 <option value="" selected disabled hidden>Escolha seu Gênero</option>
                 <option value="F">Feminino</option>
@@ -28,7 +28,7 @@
               <input type="text" name="estado" placeholder="Estado" value="" class="form-control">
               <input type="text" name="email" placeholder="E-mail" value="" class="form-control">
               <input type="text" name="username" placeholder="Nome de Usuário" value="" class="form-control">
-              <input type="password" name="senha" placeholder="Senha" value="" class="form-control">
+              <input type="password" name="password" placeholder="Senha" value="" class="form-control">
               <button type="submit" class="btn btn-primary btn-block" name="button">Cadastrar</button>
             </div>
           </form>

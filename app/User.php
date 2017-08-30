@@ -8,8 +8,8 @@ class User extends Model
 {
     protected $table = 'users';
 
-    protected $fillable = array('nome', 'genero', 'datanascimento',
-     'cidade', 'estado', 'email', 'username', 'senha');
+    protected $fillable = array('name', 'genero', 'datanascimento',
+     'cidade', 'estado', 'email', 'username', 'password');
 
     protected $guarded = ['id'];
 

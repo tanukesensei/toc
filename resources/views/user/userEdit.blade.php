@@ -15,7 +15,7 @@
 
             <input type="hidden" name="_token" value="{{csrf_token()}}">
 
-              <input type="text" name="nome" placeholder="Nome" value="{{$u->nome}}" class="form-control">
+              <input type="text" name="name" placeholder="Nome" value="{{$u->name}}" class="form-control">
 
               <select class="form-control" name="genero">
                 <?php if (!empty($u->genero)){ ?>
