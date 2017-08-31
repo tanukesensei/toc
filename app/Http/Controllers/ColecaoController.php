@@ -38,9 +38,11 @@ class ColecaoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ColecaoRequest $request)
     {
-        //
+        Colecao::create($request->all());
+
+        return redirect()->action('UserController@index');
     }
 
     /**

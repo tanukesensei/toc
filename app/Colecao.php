@@ -8,8 +8,8 @@ class Colecao extends Model
 {
   protected $table = 'colecao';
 
-  protected $fillable = array('name',
-   'categoria');
+  protected $fillable = array('nome',
+   'categoria', 'usuario');
 
   protected $guarded = ['id'];
 
