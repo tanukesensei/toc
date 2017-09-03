@@ -6,7 +6,6 @@
   </head>
   <body>
     @foreach ($users as $u)
-
     <input type="hidden" name="id" value="{{ $u->id }}">
     <h3>Bem vindo
       @if (empty($u->username))

@@ -62,9 +62,14 @@ class ColecaoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, CategoriaRequest $request)
     {
-        //
+        $col = Colecao::find($id);
+        $categoria = Categoria::find($request->all());
+        if (empty($col)) {
+          return "Coleção não cadastrada.";
+        }
+        return view('colecao.colEdit')->with('col', $col, 'categoria', $categoria);
     }
 
     /**

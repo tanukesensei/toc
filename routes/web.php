@@ -27,6 +27,11 @@ Route::get('user/destroy/{id}', 'UserController@destroy')->where('id', '[0-9]+')
 //Coleção rotas
 Route::get('colecao/create/{id}', 'ColecaoController@create')->where('id', '[0-9]+');
 Route::post('colecao/store','ColecaoController@store');
+Route::get('colecao/edit/{id}', 'ColecaoController@edit');
+
+// upload rotas
+Route::get('upload', 'UserController@foto');
+Route::post('up', 'UserController@upload');
 
 //Autenticação rotas
 Auth::routes();

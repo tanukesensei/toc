@@ -107,4 +107,17 @@ class UserController extends Controller
         User::find($id)->delete();
         return redirect()->action('UserController@index');
     }
+
+    public function foto()
+    {
+      return view('upload');
+    }
+
+    public function upload(Request $request)
+    {
+      $path = $request->file("foto")->store("avatar");
+      return $path;
+
+      //return "oi";
+    }
 }
