@@ -28,7 +28,8 @@ class ColecaoController extends Controller
      */
     public function create($id)
     {
-        $categoria = DB::select("SELECT * FROM categoria");
+        $categoria = Categoria::all();
+        //$categoria = DB::select("SELECT * FROM categoria");
         return view('colecao.colCad')->with('categoria', $categoria);
     }
 
@@ -62,14 +63,15 @@ class ColecaoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id, CategoriaRequest $request)
+    public function edit($id)
     {
         $col = Colecao::find($id);
-        $categoria = Categoria::find($request->all());
+        $categoria = Categoria::all();
+      //  dd($categoria);//$categoria = Categoria::find($request->all());
         if (empty($col)) {
           return "Coleção não cadastrada.";
         }
-        return view('colecao.colEdit')->with('col', $col, 'categoria', $categoria);
+        return view('colecao.colEdit')->with(array('col' => $col, 'categoria' => $categoria));
     }
 
     /**

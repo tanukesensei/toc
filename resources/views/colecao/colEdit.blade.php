@@ -12,9 +12,9 @@
 
       <select class="" name="categoria">
         <option value="" selected disabled hidden>Escolha a categoria de sua coleção</option>
-        @foreach($categoria as $c)
-        <option value="$c->id">$c->nome</option>
-        @endforeach
+@foreach($categoria as $c)
+        <option value="{{$c->id}}">{{$c->nome}}</option>
+@endforeach
       </select>
 
       <input type="hidden" name="usuario" value="{{Auth::user()->id}}">

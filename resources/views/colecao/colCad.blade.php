@@ -13,7 +13,7 @@
       <select class="" name="categoria">
         <option value="" selected disabled hidden>Escolha a categoria de sua coleção</option>
 @foreach ($categoria as $c)
-        <option value="{{$c->id}}">{{$c->categoria}}</option>
+        <option value="{{$c->id}}">{{$c->nome}}</option>
 @endforeach
       </select>
 
