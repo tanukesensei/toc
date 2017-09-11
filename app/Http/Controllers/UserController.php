@@ -115,8 +115,10 @@ class UserController extends Controller
 
     public function upload(Request $request)
     {
-      $path = $request->file("foto")->store("avatar");
-      return $path;
+      $user = new User;
+      $user->imagem = $request->file("foto")->store("avatar");
+      $user->save();
+      return redirect()->action('UserController@index');
 
       //return "oi";
     }
