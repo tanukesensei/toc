@@ -31,7 +31,7 @@ Route::get('colecao/edit/{id}', 'ColecaoController@edit');
 
 // upload rotas
 Route::get('upload', 'UserController@foto');
-Route::post('up', 'UserController@upload');
+Route::put('up', 'UserController@upload');
 
 //Autenticação rotas
 Auth::routes();

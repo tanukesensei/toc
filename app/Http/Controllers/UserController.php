@@ -113,11 +113,11 @@ class UserController extends Controller
       return view('upload');
     }
 
-    public function upload(Request $request)
+    public function upload(Request $request, $id)
     {
-      $user = new User;
-      $user->imagem = $request->file("foto")->store("avatar");
-      $user->save();
+      $user = User::find($id);
+      $user->update($request->file("foto")->store("avatar"));
+      //$user->save();
       return redirect()->action('UserController@index');
 
       //return "oi";
