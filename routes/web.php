@@ -16,23 +16,23 @@ Route::get('/', function () {
 });
 
 // user rotas
-Route::get('/user/perfil', 'UserController@index');
-Route::get('/user/create', 'UserController@create');
-Route::post('/user/store', 'UserController@store');
-Route::get('/user/show/{id}', 'UserController@show')->where('id', '[0-9]+');
-Route::get('/user/edit/{id}', 'UserController@edit')->where('id', '[0-9]+');
-Route::put('/user/update/{id}', 'UserController@update')->where('id', '[0-9]+');
-Route::get('user/destroy/{id}', 'UserController@destroy')->where('id', '[0-9]+');
+Route::get('/user/perfil', 'UserController@index'); // ok
+Route::get('/user/create', 'UserController@create');// ok
+Route::post('/user/store', 'UserController@store'); // ok
+Route::get('/user/show/{id}', 'UserController@show')->where('id', '[0-9]+'); // ok
+Route::get('/user/edit/{id}', 'UserController@edit')->where('id', '[0-9]+'); // ok
+Route::put('/user/update/{id}', 'UserController@update')->where('id', '[0-9]+'); // ok
+Route::get('user/destroy/{id}', 'UserController@destroy')->where('id', '[0-9]+'); // ok
 
 //Coleção rotas
-Route::get('colecao/create/{id}', 'ColecaoController@create')->where('id', '[0-9]+');
-Route::post('colecao/store','ColecaoController@store');
-Route::get('colecao/edit/{id}', 'ColecaoController@edit');
+Route::get('colecao/create/{id}', 'ColecaoController@create')->where('id', '[0-9]+'); // ok
+Route::post('colecao/store','ColecaoController@store'); // ok
+Route::get('colecao/edit/{id}', 'ColecaoController@edit'); // ok
 
 // upload rotas
-Route::get('upload', 'UserController@foto');
-Route::put('up', 'UserController@upload');
+Route::get('upload', 'UserController@foto'); // ok
+Route::put('up/{id}', 'UserController@upload');
 
 //Autenticação rotas
-Auth::routes();
-Route::get('/home', 'HomeController@index');
+Auth::routes(); // ok
+Route::get('/home', 'HomeController@index'); // ok

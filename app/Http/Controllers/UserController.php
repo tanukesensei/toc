@@ -116,10 +116,9 @@ class UserController extends Controller
     public function upload(Request $request, $id)
     {
       $user = User::find($id);
-      $user->update($request->file("foto")->store("avatar"));
-      //$user->save();
+      $path = $request->file("foto")->store("avatar");
+      $user->imagem = $path;
+      $user->update();
       return redirect()->action('UserController@index');
-
-      //return "oi";
     }
 }

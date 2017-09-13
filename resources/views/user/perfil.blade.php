@@ -14,6 +14,8 @@
       {{$u->username}}
       @endif
     </h3>
+    <!--<img src="{{Storage::url('avatar/DisHFMJw7p2kEl2bonhllmNSBBLcULE2xhY37O4I.png')}}" alt="">-->
+    <img src="{{Storage::url($u->imagem)}}" alt="{{$u->imagem}}">
     <h5>Sobre Min: {{$u->descricao}}</h5>
 
     @endforeach

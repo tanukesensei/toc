@@ -5,13 +5,12 @@
     <title>upload</title>
   </head>
   <body>
-    <form class="form-group" action="/up" method="post" enctype="multipart/form-data">
+    <form class="form-group" action="/up/{{Auth::user()->id}}" method="post" enctype="multipart/form-data">
       {!! method_field('put') !!}
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
-      <input type="hidden" id="id" value="{{Auth::user()->id}}" >
       <input type="file" name="foto">
-      <img src="{{Storage::url('avatar/VOrvyVEdb7m3sxMDnQNBus1T1cX2XjVYVjkJBlKU.jpeg')}}" alt="">
-      <input type="submit" name="enviar" value="enviar">
+      <img src="{{Storage::url('avatar/DisHFMJw7p2kEl2bonhllmNSBBLcULE2xhY37O4I.png')}}" alt="">
+      <input type="submit" name="enviar" value="Enviar">
     </form>
   </body>
 </html>
