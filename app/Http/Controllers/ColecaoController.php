@@ -65,7 +65,7 @@ class ColecaoController extends Controller
     {
         $col = Colecao::find($id);
         if (empty($col)) {
-          return  "Colecao não cadastrada.";
+          return  "Coleção não cadastrada.";
         }
         $categoria = Categoria::all();
         return view('colecao.colEdit')->with(array('col' => $col, 'categoria' => $categoria));
