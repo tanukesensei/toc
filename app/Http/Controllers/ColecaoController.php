@@ -29,6 +29,7 @@ class ColecaoController extends Controller
     public function create($id)
     {
         $categoria = Categoria::all();
+        //$categoria = DB::select("SELECT * FROM categoria");
         return view('colecao.colCad')->with('categoria', $categoria);
     }
 
@@ -41,6 +42,7 @@ class ColecaoController extends Controller
     public function store(ColecaoRequest $request)
     {
         Colecao::create($request->all());
+
         return redirect()->action('UserController@index');
     }
 
@@ -64,10 +66,11 @@ class ColecaoController extends Controller
     public function edit($id)
     {
         $col = Colecao::find($id);
-        if (empty($col)) {
-          return  "Colecao não cadastrada.";
-        }
         $categoria = Categoria::all();
+      //  dd($categoria);//$categoria = Categoria::find($request->all());
+        if (empty($col)) {
+          return "Coleção não cadastrada.";
+        }
         return view('colecao.colEdit')->with(array('col' => $col, 'categoria' => $categoria));
     }
 
@@ -80,12 +83,7 @@ class ColecaoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // totalmente funcional
-        $c = Colecao::find($id);
-        $path = $request->file("foto")->store("colecao");
-        $c->imagem = $path;
-        $c->update($request->all());
-        return redirect()->action('UserController@index');
+        //
     }
 
     /**
@@ -97,7 +95,5 @@ class ColecaoController extends Controller
     public function destroy($id)
     {
         //
-        Colecao::find($id)->delete();
-        return redirect()->action('UserController@index');
     }
 }
