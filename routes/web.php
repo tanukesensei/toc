@@ -28,10 +28,12 @@ Route::get('user/destroy/{id}', 'UserController@destroy')->where('id', '[0-9]+')
 Route::get('colecao/create/{id}', 'ColecaoController@create')->where('id', '[0-9]+'); // ok
 Route::post('colecao/store','ColecaoController@store'); // ok
 Route::get('colecao/edit/{id}', 'ColecaoController@edit'); // ok
+Route::put('colecao/update/{id}', 'ColecaoController@update'); // ok
+Route::get('colecao/destroy/{id}', 'ColecaoController@destroy'); // 
 
 // upload rotas
 Route::get('upload', 'UserController@foto'); // ok
-Route::put('up/{id}', 'UserController@upload');
+Route::put('up/{id}', 'UserController@upload'); //ok
 
 //Autenticação rotas
 Auth::routes(); // ok
