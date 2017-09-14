@@ -115,10 +115,16 @@ class UserController extends Controller
 
     public function upload(Request $request, $id)
     {
+        // acha o ID do usuário
       $user = User::find($id);
+      // File(foto) pega o arquivo e joga pra dentro da pasta avatar com o comando store.
+      // $path recebe o a pasta+novo hash do arquivo.
       $path = $request->file("foto")->store("avatar");
+      // A $pasta com o caminho é jogada para dentro do campo imagen da tabela users
       $user->imagem = $path;
+      // O update é realizado.
       $user->update();
+      // Redireciona para a index do usuários.
       return redirect()->action('UserController@index');
     }
 }

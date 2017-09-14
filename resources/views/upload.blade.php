@@ -9,7 +9,6 @@
       {!! method_field('put') !!}
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <input type="file" name="foto">
-      <img src="{{Storage::url('avatar/DisHFMJw7p2kEl2bonhllmNSBBLcULE2xhY37O4I.png')}}" alt="">
       <input type="submit" name="enviar" value="Enviar">
     </form>
   </body>
