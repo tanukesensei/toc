@@ -27,13 +27,13 @@ Route::get('user/destroy/{id}', 'UserController@destroy')->where('id', '[0-9]+')
 //Coleção rotas
 Route::get('colecao/create/{id}', 'ColecaoController@create')->where('id', '[0-9]+'); // ok
 Route::post('colecao/store','ColecaoController@store'); // ok
-Route::get('colecao/edit/{id}', 'ColecaoController@edit'); // ok
-Route::put('colecao/update/{id}', 'ColecaoController@update'); // ok
-Route::get('colecao/destroy/{id}', 'ColecaoController@destroy'); // 
+Route::get('colecao/edit/{id}', 'ColecaoController@edit')->where('id', '[0-9]+'); // ok
+Route::put('colecao/update/{id}', 'ColecaoController@update')->where('id', '[0-9]+'); // ok
+Route::get('colecao/destroy/{id}', 'ColecaoController@destroy')->where('id', '[0-9]+'); // ok
 
 // upload rotas
 Route::get('upload', 'UserController@foto'); // ok
-Route::put('up/{id}', 'UserController@upload'); //ok
+Route::put('up/{id}', 'UserController@upload')->where('id', '[0-9]+'); // ok
 
 //Autenticação rotas
 Auth::routes(); // ok
