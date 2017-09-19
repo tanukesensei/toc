@@ -2,12 +2,14 @@
 
 namespace toc\Http\Controllers;
 
+use toc\User; // Model
 use toc\Colecao; //model
 use toc\Categoria; // Model
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use toc\Http\Requests\CategoriaRequest; // Request
+use toc\Http\Requests\UserRequest; // Request
 use toc\Http\Requests\ColecaoRequest; // Request
+use toc\Http\Requests\CategoriaRequest; // Request
 
 class ColecaoController extends Controller
 {
@@ -18,7 +20,8 @@ class ColecaoController extends Controller
      */
     public function index()
     {
-        //
+        //$colecoes = DB::select('select * colecao');
+
     }
 
     /**
