@@ -31,6 +31,10 @@ Route::get('colecao/edit/{id}', 'ColecaoController@edit')->where('id', '[0-9]+')
 Route::put('colecao/update/{id}', 'ColecaoController@update')->where('id', '[0-9]+'); // ok
 Route::get('colecao/destroy/{id}', 'ColecaoController@destroy')->where('id', '[0-9]+'); // ok
 
+Route::get('manga/create', 'MangaController@create');
+
+
+
 // upload rotas
 Route::get('upload', 'UserController@foto'); // ok
 Route::put('up/{id}', 'UserController@upload')->where('id', '[0-9]+'); // ok

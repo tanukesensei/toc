@@ -43,7 +43,9 @@ class ColecaoController extends Controller
      */
     public function store(ColecaoRequest $request)
     {
-        Colecao::create($request->all());
+        $colecao = Colecao::create($request->all());
+
+       // $id = $colecao->id; // rolou amor
         return redirect()->action('UserController@index');
     }
 
