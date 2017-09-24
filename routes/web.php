@@ -31,7 +31,8 @@ Route::get('colecao/edit/{id}', 'ColecaoController@edit')->where('id', '[0-9]+')
 Route::put('colecao/update/{id}', 'ColecaoController@update')->where('id', '[0-9]+'); // ok
 Route::get('colecao/destroy/{id}', 'ColecaoController@destroy')->where('id', '[0-9]+'); // ok
 
-Route::get('manga/create', 'MangaController@create');
+//Route::get('manga/create', 'MangaController@create');
+Route::get('manga/create/{id}', 'MangaController@create');
 
 
 

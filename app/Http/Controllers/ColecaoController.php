@@ -45,8 +45,12 @@ class ColecaoController extends Controller
     {
         $colecao = Colecao::create($request->all());
 
-       // $id = $colecao->id; // rolou amor
-        return redirect()->action('UserController@index');
+        $id = $colecao->id; // rolou amor
+        $view = $colecao->categoria;
+        dd($view);
+
+        return view('manga.mangaCad')->with('id', $id);
+        //return redirect()->action('UserController@index');
     }
 
     /**
