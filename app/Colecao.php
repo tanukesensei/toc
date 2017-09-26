@@ -9,7 +9,8 @@ class Colecao extends Model
   protected $table = 'colecao';
 
   protected $fillable = array('nome', 'descricao', 'imagem',
-   'categoria', 'usuario');
+   'categoria', 'usuario', 'mediapag', 'numedicoes', 'isbn',
+   'autor', 'editora');
 
   protected $guarded = ['id'];
 
