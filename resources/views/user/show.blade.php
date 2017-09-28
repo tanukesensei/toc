@@ -5,22 +5,22 @@
     <title>Perfil</title>
   </head>
   <body>
-    @foreach ($users as $u)
-    <input type="hidden" name="id" value="{{ $u->id }}">
-    <h3>Bem vindo
-      @if (empty($u->username))
-      {{$u->email}}
+
+    <input type="hidden" name="id" value="{{ $users->id }}">
+    <h3>
+      Bem vindo
+      @if (empty($users->username))
+      {{$users->email}}
       @else
-      {{$u->username}}
+      {{$users->username}}
       @endif
     </h3>
     <!--
     <img src="{{Storage::url('avatar/DisHFMJw7p2kEl2bonhllmNSBBLcULE2xhY37O4I.png')}}" alt="">
     Exemplo de como exibir uma imagem estática.
     -->
-    <img src="{{Storage::url($u->imagem)}}" alt="{{$u->imagem}}">
-    <h5>Sobre Min: {{$u->descricao}}</h5>
+    <img src="{{Storage::url($users->imagem)}}" alt="{{$users->imagem}}">
+    <h5>Sobre Min: {{$users->descricao}}</h5>
 
-    @endforeach
   </body>
 </html>

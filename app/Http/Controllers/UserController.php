@@ -62,9 +62,14 @@ class UserController extends Controller
      * @param  \toc\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($id)
     {
-        //
+      $users = User::find($id);
+      //dd($users);
+      if (empty($users)) {
+          return "Usuario não cadastrado.";
+      }
+      return view('user.show')->with('users', $users);
     }
 
     /**
