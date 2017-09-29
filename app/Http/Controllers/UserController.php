@@ -3,9 +3,11 @@
 namespace toc\Http\Controllers;
 
 use toc\User; // Model
+use toc\Colecao; // Model
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; // acesso ao sql
 use toc\Http\Requests\UserRequest; // Request
+use toc\Http\Requests\ColecaoRequest; //Request
 
 class UserController extends Controller
 {
