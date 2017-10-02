@@ -4,11 +4,13 @@ namespace toc\Http\Controllers;
 
 use toc\User; // Model
 use toc\Colecao; //model
+use toc\Editora; // Model
 use toc\Categoria; // Model
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use toc\Http\Requests\UserRequest; // Request
 use toc\Http\Requests\ColecaoRequest; // Request
+use toc\Http\Requests\EditoraRequest; // Request
 use toc\Http\Requests\CategoriaRequest; // Request
 
 class ColecaoController extends Controller
@@ -32,7 +34,8 @@ class ColecaoController extends Controller
     public function create($id)
     {
         $categoria = Categoria::all();
-        return view('colecao.colCad')->with('categoria', $categoria);
+        $editora = Editora::all();
+        return view('colecao.colCad')->with(array('categoria' => $categoria, 'editora' => $editora));
     }
 
     /**
@@ -46,11 +49,9 @@ class ColecaoController extends Controller
         $colecao = Colecao::create($request->all());
 
         $id = $colecao->id; // rolou amor
-        $view = $colecao->categoria;
-        dd($view);
-
-        return view('manga.mangaCad')->with('id', $id);
-        //return redirect()->action('UserController@index');
+        //$view = $colecao->categoria;
+        //return view('manga.mangaCad')->with('id', $id);
+        return redirect()->action('UserController@index');
     }
 
     /**

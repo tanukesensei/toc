@@ -67,11 +67,14 @@ class UserController extends Controller
     public function show($id)
     {
       $users = User::find($id);
-      //dd($users);
       if (empty($users)) {
-          return "Usuario não cadastrado.";
+        return "Usuario não cadastrado.";
       }
-      return view('user.show')->with('users', $users);
+      $user = $users->id;
+      $colecao = DB::select("select * from colecao where usuario = $user order by nome asc");
+      //dd($colecao);
+
+      return view('user.show')->with(array('users' => $users, 'colecao' => $colecao));
     }
 
     /**

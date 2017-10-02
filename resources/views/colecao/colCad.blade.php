@@ -5,28 +5,28 @@
     <title></title>
   </head>
   <body>
+    <!-- tudo OK -->
     <form class="" action="/colecao/store" method="post">
       <input type="hidden" name="_token" value="{{csrf_token()}}">
 
       <input type="text" name="nome" placeholder="Nome da coleção">
-<!-- daqui pra cima ta rolando -->
+
 
       <input type="text" name="descricao" value="" placeholder="Descrição">
 
-      <input type="text" name="numeropag" value="" placeholder="Número de Páginas">
+      <input type="text" name="mediapag" value="" placeholder="Número médio de Páginas">
 
-      <input type="text" name="numeroedicao" value="" placeholder="Número da Edição">
-
-      <input type="text" name="isbn" value="" placeholder="Código ISBN">
+      <input type="text" name="numedicoes" value="" placeholder="Número de Edições">
 
       <input type="text" name="autor" value="" placeholder="Autor">
 
       <select class="" name="editora">
-        <option value="" selected disabled hidden>Editora</option>
-        <option value="">editora1</option>
+        <option value="" selected disabled hidden>Escolha a editora</option>
+@foreach ($editora as $e)
+        <option value="{{$e->id}}">{{$e->nome}}</option>
+@endforeach
       </select>
 
-<!-- daqui pra baixo ta rolando-->
       <select class="" name="categoria">
         <option value="" selected disabled hidden>Escolha a categoria de sua coleção</option>
 @foreach ($categoria as $c)

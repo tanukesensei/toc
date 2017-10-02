@@ -20,7 +20,10 @@
     Exemplo de como exibir uma imagem estática.
     -->
     <img src="{{Storage::url($users->imagem)}}" alt="{{$users->imagem}}">
-    <h5>Sobre Min: {{$users->descricao}}</h5>
-
+    <h4>Sobre Min: {{$users->descricao}}</h4>
+    <h4>Minhas coleções:</h4>
+    @foreach ($colecao as $c)
+      <a href="#">{{$c->nome}}</a>
+    @endforeach
   </body>
 </html>
