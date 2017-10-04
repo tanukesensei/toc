@@ -8,7 +8,6 @@
 
     <input type="hidden" name="id" value="{{ $users->id }}">
     <h3>
-      Bem vindo
       @if (empty($users->username))
       {{$users->email}}
       @else

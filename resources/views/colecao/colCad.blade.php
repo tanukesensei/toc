@@ -11,7 +11,6 @@
 
       <input type="text" name="nome" placeholder="Nome da coleção">
 
-
       <input type="text" name="descricao" value="" placeholder="Descrição">
 
       <input type="text" name="mediapag" value="" placeholder="Número médio de Páginas">

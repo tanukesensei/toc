@@ -6,6 +6,7 @@ use toc\User; // Model
 use toc\Colecao; // Model
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; // acesso ao sql
+use Illuminate\Support\Facades\Auth; // acesso ao sql
 use toc\Http\Requests\UserRequest; // Request
 use toc\Http\Requests\ColecaoRequest; //Request
 
@@ -18,8 +19,12 @@ class UserController extends Controller
      */
     public function index()
     {
-      $users = DB::select('select * from users');
-      return view('user.perfil')->with('users', $users);
+      if (Auth::id() != null) {
+        $user = Auth::id();// pega o id do usuário logado com muita alegria xD
+        $users = DB::select("select * from users where id = $user");
+        return view('user.perfil')->with('users', $users);
+      }
+      return redirect()->action('HomeController@index');
     }
 
     /**
