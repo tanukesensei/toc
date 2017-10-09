@@ -46,11 +46,17 @@ class ColecaoController extends Controller
      */
     public function store(ColecaoRequest $request)
     {
-        $colecao = Colecao::create($request->all());
 
+        $colecao = Colecao::create($request->all());
         $id = $colecao->id; // rolou amor
         //$view = $colecao->categoria;
         //return view('manga.mangaCad')->with('id', $id);
+        //tava aqui
+        $path = $request->file("foto")->store("colecao");
+        // A $pasta com o caminho é jogada para dentro do campo imagen da tabela users
+        $colecao->imagem = $path;
+        $colecao->update();
+        // O update é realizado.
         return redirect()->action('UserController@index');
     }
 
