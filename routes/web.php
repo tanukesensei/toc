@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// ROTA TESTE
+Route::get('teste', 'UserController@teste');
+
 // user rotas
 Route::get('/user/perfil', 'UserController@index'); // ok
 Route::get('/user/create', 'UserController@create');// ok

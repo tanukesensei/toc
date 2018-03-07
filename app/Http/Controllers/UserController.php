@@ -142,4 +142,9 @@ class UserController extends Controller
       // Redireciona para a index do usuários.
       return redirect()->action('UserController@index');
     }
+
+    public function teste()
+    {
+      return view('layouts.dashboard');
+    }
 }
