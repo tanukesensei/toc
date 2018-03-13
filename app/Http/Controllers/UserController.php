@@ -144,7 +144,16 @@ class UserController extends Controller
     }
 
     public function teste()
-    {
-      return view('layouts.dashboard');
+    { $id = 10;
+      $users = User::find($id);
+      if (empty($users)) {
+        return "Usuario não cadastrado.";
+      }
+      $user = $users->id;
+      $mangas = DB::select("select * from colecao where usuario = $user AND categoria = 3");
+      $total_mangas = count($mangas);
+      //dd($total_mangas);
+
+      return view('user.teste')->with("mangas", $mangas);
     }
 }

@@ -2,9 +2,12 @@
 <html lang="{{ config('app.locale') }}">
 <head>
 	<meta charset="utf-8" />
-	<link rel="apple-touch-icon" sizes="76x76" href="{{ asset('material-dashboard/assets/img/apple-icon.png') }}" />
-	<link rel="icon" type="image/png" href="{{ asset('material-dashboard/assets/img/favicon.png') }}" />
+	<link rel="apple-touch-icon" sizes="76x76" href="{{ asset('resources/assets/material-dashboard/assets/img/apple-icon.png') }}" />
+	<link rel="icon" type="image/png" href="{{ asset('resources/assets/material-dashboard/assets/img/favicon.png') }}" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<!-- CSRF Token -->
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 
 	<title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -13,14 +16,15 @@
 
 
     <!-- Bootstrap core CSS     -->
-    <link href="{{ asset('material-dashboard/assets/css/bootstrap.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/bootstrap.min.css') }}"
+		C:\Bitnami\wapp7\apache2\htdocs\toc\public\css rel="stylesheet" />
     <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
 
     <!--  Material Dashboard CSS    -->
-    <link href="{{ asset('material-dashboard/assets/css/material-dashboard.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('css/material-dashboard.css') }}" rel="stylesheet"/>
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="{{ asset('material-dashboard/assets/css/demo.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/demo.css') }}" rel="stylesheet" />
 
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
@@ -30,8 +34,8 @@
 <body>
 
   <!-- Começo do Painel Lateral -->
-  	<div class="wrapper">
-  	    <div class="sidebar" data-color="purple" data-image="{{ asset('material-dashboard/assets/img/sidebar-1.jpg') }}">
+<div class="wrapper">
+  	    <div class="sidebar" data-color="purple" data-image="{{ asset('resources/assets/material-dashboard/assets/img/sidebar-1.jpg') }}">
 
   			<!--
   		        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
@@ -41,7 +45,7 @@
 
   			<div class="logo">
   				<a href="http://www.creative-tim.com" class="simple-text">
-  					Creative Tim
+  					TOC
   				</a>
   			</div>
 
@@ -50,26 +54,26 @@
   	                <li class="active">
                         <a href="#">
   	                        <i class="material-icons">home</i>
-  	                        <p>Página principal <span class="label label-info">Demo</span></p>
+  	                        <p>Página principal</p>
 
   	                    </a>
   	                </li>
   									<li>
   	                    <a href="#">
   	                        <i class="material-icons">apps</i>
-  	                        <p>Minhas coleções <span class="label label-info">Demo</span></p>
+  	                        <p>Minhas coleções</p>
   	                    </a>
   	                </li>
   									<li>
   	                    <a href="#">
   	                        <i class="material-icons">create_new_folder</i>
-  	                        <p>+ Coleções <span class="label label-info">Demo</span></p>
+  	                        <p>+ Coleções</p>
   	                    </a>
   	                </li>
   									<li>
   	                    <a href="#">
   	                        <i class="material-icons">search</i>
-  	                        <p>Pesquisar <span class="label label-info">Demo</span></p>
+  	                        <p>Pesquisar</p>
   	                    </a>
   	                </li>
   	            </ul>
@@ -83,7 +87,7 @@
 
   <!-- Começo do menu superior (Navbar) -->
 
-  	    <div class="main-panel">
+  	 <div class="main-panel">
   				<nav class="navbar navbar-transparent navbar-absolute">
   				<div class="container-fluid">
   					<div class="navbar-header">
@@ -101,7 +105,7 @@
   								<a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
   									<i class="material-icons">person</i>
   									<p class="hidden-lg hidden-md">Dashboard</p>
-  									AlexJMercer
+  									{{ Auth::user()->name }}
   								</a>
   							</li>
 
@@ -112,10 +116,18 @@
   	 						   </a>
   								 <ul class="dropdown-menu">
   								 <li><a href="#"><i class="material-icons">settings</i> Configurações</a></li>
-  								 <li><a href="#">You have 5 new tasks</a></li>
+  								<!-- <li><a href="#">You have 5 new tasks</a></li>
   								 <li><a href="#">You're now friend with Andrew</a></li>
-  								 <li><a href="#">Another Notification</a></li>
-  								 <li><a href="#"><i class="material-icons">exit_to_app</i> Sair</a></li>
+  								 <li><a href="#">Another Notification</a></li>-->
+  								 <li><a href="{{ route('logout') }}"
+									 	 			onclick="event.preventDefault();
+									 				document.getElementById('logout-form').submit();">
+									 				<i class="material-icons">exit_to_app</i> Sair
+											 </a>
+											 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+													 {{ csrf_field() }}
+											 </form>
+									 </li>
   								 </ul>
   							</li>
   						</ul>
@@ -132,94 +144,14 @@
   					</div>
   				</div>
   			</nav>
-
-
-
-  	        <div class="content">
-  	            <div class="container-fluid">
-  	                <div class="row">
-  									<!-- <div class="row">  Row que quebra as duas linhas -->
-  										<div class="col-lg-6 col-md-6 col-sm-6">
-  											<div class="card card-stats">
-  												<div class="card-header" data-background-color="red">
-  													<i class="material-icons">book</i>
-  												</div>
-  												<div class="card-content">
-  													<p class="category">Livros</p>
-  													<h3 class="title">75</h3>
-  												</div>
-  												<div class="card-footer">
-  													<a href="#"></a>
-  													<div class="stats">
-  														 <i class="material-icons text-primary">find_in_page</i><a href="#">Visualizar</a>
-  													</div>
-  												</div>
-  											</div>
-  										</div>
-
-
-  										<div class="col-lg-6 col-md-6 col-sm-6">
-  											<div class="card card-stats">
-  												<div class="card-header" data-background-color="blue">
-  													<i class="material-icons">developer_board</i>
-  												</div>
-  												<div class="card-content">
-  													<p class="category">Revistas</p>
-  													<h3 class="title">245</h3>
-  												</div>
-  												<div class="card-footer">
-  													<div class="stats">
-  														<i class="material-icons text-primary">find_in_page</i> <a href="#">Visualizar</a>
-  													</div>
-  												</div>
-  											</div>
-  										</div>
-  									<!-- </div> Fecha o row de quebra em duas linhas-->
-
-
-
-
-  										<div class="col-lg-6 col-md-6 col-sm-6">
-  											<div class="card card-stats">
-  												<div class="card-header" data-background-color="orange">
-  													<i class="material-icons">burst_mode</i>
-  												</div>
-  												<div class="card-content">
-  													<p class="category">Mangás</p>
-  													<h3 class="title">56</h3>
-  												</div>
-  												<div class="card-footer">
-  													<div class="stats">
-  														<i class="material-icons text-primary">find_in_page</i> <a href="#">Visualizar</a>
-  													</div>
-  												</div>
-  											</div>
-  										</div>
-  										<div class="col-lg-6 col-md-6 col-sm-6">
-  											<div class="card card-stats">
-  												<div class="card-header" data-background-color="green">
-  													<i class="material-icons">high_quality</i>
-  												</div>
-  												<div class="card-content">
-  													<p class="category">Quadrinhos</p>
-  													<h3 class="title">353</h3>
-  												</div>
-  												<div class="card-footer">
-  													<div class="stats">
-  														<i class="material-icons text-primary">find_in_page</i> <a href="#">Visualizar</a>
-  													</div>
-  												</div>
-  											</div>
-  										</div>
 <!-- Fim do menu de cima (Navbar) -->
-      </div><!--fecha o row-->
-    <div class="row"></div>
-  </div>
-</div>
 
 
+<!-------------------------------------------------------------------------->
 
-  <!-------------------------------------------------------------------------->
+@yield('content')
+
+<!-------------------------------------------------------------------------->
 
 
   <!-- Começo do footer -->
@@ -244,8 +176,8 @@
   <!-- Final do footer -->
 
 
-  	    </div>
-  	</div>
+			</div>
+</div>
 
 
   <!-------------------------------------------------------------------------->
@@ -255,24 +187,24 @@
 </body>
 
 	<!--   Core JS Files   -->
-	<script src="{{ asset('material-dashboard/assets/js/jquery-3.1.0.min.js') }}" type="text/javascript"></script>
-	<script src="{{ asset('material-dashboard/assets/js/bootstrap.min.js') }}" type="text/javascript"></script>
-	<script src="{{ asset('material-dashboard/assets/js/material.min.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('js/jquery-3.1.0.min.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('js/bootstrap.min.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('js/material.min.js') }}" type="text/javascript"></script>
 
 	<!--  Charts Plugin -->
-	<script src="{{ asset('material-dashboard/assets/js/chartist.min.js') }}"></script>
+	<script src="{{ asset('js/chartist.min.js') }}"></script>
 
 	<!--  Notifications Plugin    -->
-	<script src="{{ asset('material-dashboard/assets/js/bootstrap-notify.js') }}"></script>
+	<script src="{{ asset('js/bootstrap-notify.js') }}"></script>
 
 	<!--  Google Maps Plugin    -->
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
 
 	<!-- Material Dashboard javascript methods -->
-	<script src="{{ asset('material-dashboard/assets/js/material-dashboard.js') }}"></script>
+	<script src="{{ asset('js/material-dashboard.js') }}"></script>
 
 	<!-- Material Dashboard DEMO methods, don't include it in your project! -->
-	<script src="{{ asset('material-dashboard/assets/js/demo.js') }}"></script>
+	<script src="{{ asset('js/demo.js') }}"></script>
 
 
 </html>
