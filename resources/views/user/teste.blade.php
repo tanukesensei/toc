@@ -11,7 +11,7 @@
               </div>
               <div class="card-content">
                 <p class="category">Livros</p>
-                <h3 class="title">75</h3>
+                <h3 class="title">{{ $livros }}</h3>
               </div>
               <div class="card-footer">
                 <a href="#"></a>
@@ -22,7 +22,6 @@
             </div>
           </div>
 
-
           <div class="col-lg-6 col-md-6 col-sm-6">
             <div class="card card-stats">
               <div class="card-header" data-background-color="blue">
@@ -30,7 +29,7 @@
               </div>
               <div class="card-content">
                 <p class="category">Revistas</p>
-                <h3 class="title">006</h3>
+                <h3 class="title">{{ $revistas }}</h3>
               </div>
               <div class="card-footer">
                 <div class="stats">
@@ -39,9 +38,6 @@
               </div>
             </div>
           </div>
-
-
-
 
           <div class="col-lg-6 col-md-6 col-sm-6">
             <div class="card card-stats">
@@ -50,7 +46,7 @@
               </div>
               <div class="card-content">
                 <p class="category">Mangás</p>
-                <h3 class="title">{{count($mangas)}}</h3>
+                <h3 class="title"> {{ $mangas }}</h3>
               </div>
               <div class="card-footer">
                 <div class="stats">
@@ -59,6 +55,7 @@
               </div>
             </div>
           </div>
+
           <div class="col-lg-6 col-md-6 col-sm-6">
             <div class="card card-stats">
               <div class="card-header" data-background-color="green">
@@ -66,7 +63,7 @@
               </div>
               <div class="card-content">
                 <p class="category">Quadrinhos</p>
-                <h3 class="title">353</h3>
+                <h3 class="title">{{ $hqs }}</h3>
               </div>
               <div class="card-footer">
                 <div class="stats">

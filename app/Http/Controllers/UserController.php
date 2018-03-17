@@ -144,16 +144,25 @@ class UserController extends Controller
     }
 
     public function teste()
-    { $id = 10;
+    {
+      $id = Auth::id();
       $users = User::find($id);
       if (empty($users)) {
-        return "Usuario não cadastrado.";
+        //return "Usuario não cadastrado.";
+        return redirect()->action('HomeController@index');
       }
       $user = $users->id;
+      $livros = DB::select("select * from colecao where usuario = $user AND categoria = 1");
+      $revistas = DB::select("select * from colecao where usuario = $user AND categoria = 2");
       $mangas = DB::select("select * from colecao where usuario = $user AND categoria = 3");
-      $total_mangas = count($mangas);
-      //dd($total_mangas);
+      $hqs = DB::select("select * from colecao where usuario = $user AND categoria = 4");
+      $totalLivros = count($livros);
+      $totalRevistas = count($revistas);
+      $totalMangas = count($mangas);
+      $totalHqs = count($hqs);
+      //dd(array($totalLivros, $totalRevistas, $totalMangas, $totalHqs));
 
-      return view('user.teste')->with("mangas", $mangas);
+      //return view('user.teste')->with("mangas", $totalMangas); OK
+      return view('user.teste')->with(array('livros' => $totalLivros, 'revistas' => $totalRevistas, 'mangas' => $totalMangas, 'hqs' => $totalHqs));
     }
 }
