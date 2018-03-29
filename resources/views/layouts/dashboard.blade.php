@@ -115,7 +115,9 @@
   	 							   <p class="hidden-lg hidden-md">Profile</p>
   	 						   </a>
   								 <ul class="dropdown-menu">
-  								 <li><a href="#"><i class="material-icons">settings</i> Configurações</a></li>
+  								 <li>
+										 <a href="/user/edit/{{$u}}">
+										 <i class="material-icons">settings</i> Editar Perfil</a></li>
   								<!-- <li><a href="#">You have 5 new tasks</a></li>
   								 <li><a href="#">You're now friend with Andrew</a></li>
   								 <li><a href="#">Another Notification</a></li>-->

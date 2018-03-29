@@ -22,7 +22,7 @@ class UserController extends Controller
       if (Auth::id() != null) {
         $user = Auth::id();// pega o id do usuário logado com muita alegria xD
         $users = DB::select("select * from users where id = $user");
-        return view('user.perfil')->with('users', $users);
+        return view('user.perfil')->with(array('u' => $user, 'users' => $users));
       }
       return redirect()->action('HomeController@index');
     }
@@ -163,6 +163,16 @@ class UserController extends Controller
       //dd(array($totalLivros, $totalRevistas, $totalMangas, $totalHqs));
 
       //return view('user.teste')->with("mangas", $totalMangas); OK
-      return view('user.teste')->with(array('livros' => $totalLivros, 'revistas' => $totalRevistas, 'mangas' => $totalMangas, 'hqs' => $totalHqs));
+      return view('user.teste')->with(array('u' => $user, 'livros' => $totalLivros, 'revistas' => $totalRevistas, 'mangas' => $totalMangas, 'hqs' => $totalHqs));
+    }
+
+    public function dashboard()
+    {
+      if (Auth::id() != null) {
+        $user = Auth::id();// pega o id do usuário logado com muita alegria xD
+        $users = DB::select("select * from users where id = $user");
+        return view('layouts.dashboard')->with(array('u' => $user, 'users' => $users));
+      }
+      return redirect()->action('HomeController@index');
     }
 }
