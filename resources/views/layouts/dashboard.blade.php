@@ -1,6 +1,23 @@
 <!doctype html>
 <html lang="{{ config('app.locale') }}">
 <head>
+
+	<style media="screen">
+		.sidebar-wrapper .nav li ul{
+			display: none;
+
+		}
+		.sidebar-wrapper .nav li:hover> ul{
+			display: block;
+			list-style: none;
+			transition: max-height 0.2s ease-out;
+
+		}
+		.jojo{
+			display: block;
+
+		}
+	</style>
 	<meta charset="utf-8" />
 	<link rel="apple-touch-icon" sizes="76x76" href="{{ asset('resources/assets/material-dashboard/assets/img/apple-icon.png') }}" />
 	<link rel="icon" type="image/png" href="{{ asset('resources/assets/material-dashboard/assets/img/favicon.png') }}" />
@@ -63,9 +80,27 @@
   	                        <i class="material-icons">apps</i>
   	                        <p>Minhas coleções</p>
   	                    </a>
+												<ul class="luan">
+													<li><a href="#">
+	  	                        <i class="material-icons">apps</i>
+	  	                        <p>Livros</p>
+	  	                    </a></li>
+													<li><a href="#">
+	  	                        <i class="material-icons">apps</i>
+	  	                        <p>Revistas</p>
+	  	                    </a></li>
+													<li><a href="#">
+	  	                        <i class="material-icons">apps</i>
+	  	                        <p>Mangás</p>
+	  	                    </a></li>
+													<li><a href="#">
+	  	                        <i class="material-icons">apps</i>
+	  	                        <p>HQ's</p>
+	  	                    </a></li>
+												</ul>
   	                </li>
   									<li>
-  	                    <a href="#">
+  	                    <a href="/colecao/create/{{$u}}">
   	                        <i class="material-icons">create_new_folder</i>
   	                        <p>+ Coleções</p>
   	                    </a>
@@ -110,7 +145,7 @@
   							</li>
 
   							<li>
-  								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+  								<a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
   	 							   <i class="material-icons">keyboard_arrow_down</i>
   	 							   <p class="hidden-lg hidden-md">Profile</p>
   	 						   </a>
@@ -187,6 +222,25 @@
 
 
 </body>
+<!--PQP O rIAN TÁ ME DEVENDO ESSA-->
+<script>
+var acc = document.getElementsByClassName("luan");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+acc[i].addEventListener("click", function() {
+	this.classList.toggle("jojo");
+	var panel = this.nextElementSibling;
+	if (panel.style.maxHeight){
+		panel.style.maxHeight = null;
+	} else {
+		panel.style.maxHeight = panel.scrollHeight + "px";
+	}
+});
+}
+</script>
+
+
 
 	<!--   Core JS Files   -->
 	<script src="{{ asset('js/jquery-3.1.0.min.js') }}" type="text/javascript"></script>

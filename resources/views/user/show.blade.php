@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Perfil</title>
-  </head>
-  <body>
+@extends('layouts.dashboard')
+
+@section('content')
+<div class="content">
 
     <input type="hidden" name="id" value="{{ $users->id }}">
     <h3>
@@ -24,5 +21,6 @@
     @foreach ($colecao as $c)
       <a href="#">{{$c->nome}}</a>
     @endforeach
-  </body>
-</html>
+
+  </div>
+  @endsection

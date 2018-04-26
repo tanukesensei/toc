@@ -71,16 +71,28 @@ class UserController extends Controller
      */
     public function show($id)
     {
-      $users = User::find($id);
-      if (empty($users)) {
-        return "Usuario não cadastrado.";
-      }
-      $user = $users->id;
-      $colecao = DB::select("select * from colecao where usuario = $user order by nome asc");
-      //dd($colecao);
 
-      return view('user.show')->with(array('users' => $users, 'colecao' => $colecao));
-    }
+      if (Auth::id() != null) {
+        $usuario = Auth::id();// pega o id do usuário logado com muita alegria xD
+        /*
+        $users = DB::select("select * from users where id = $user");
+        return view('layouts.dashboard')->with(array('u' => $user, 'users' => $users));
+        */
+
+        $users = User::find($id);
+        if (empty($users)) {
+          return "Usuario não cadastrado.";
+        }
+        $user = $users->id;
+        $colecao = DB::select("select * from colecao where usuario = $user order by nome asc");
+        //dd($colecao);
+
+        return view('user.show')->with(array('u' => $usuario, 'users' => $users, 'colecao' => $colecao));
+        } else {
+          return redirect()->action('HomeController@index');
+        }
+
+  }
 
     /**
      * Show the form for editing the specified resource.
@@ -90,11 +102,19 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+      if (Auth::id() != null) {
+        $usuario = Auth::id();
+
         $users = User::find($id);
         if (empty($users)) {
           return  "Usuário não cadastrado.";
         }
-        return view('user.userEdit')->with('u', $users);
+          return view('user.userEdit')->with(array('u'=>$usuario, 'u'=> $users));
+      }
+      else
+      {
+        return redirect()->action('HomeController@index');
+      }
     }
 
     /**

@@ -3,8 +3,6 @@
 @section('content')
 <div class="content">
 
-
-
     @foreach ($users as $i)
     <input type="hidden" name="id" value="{{ $i->id }}">
     <h3>Bem vindo

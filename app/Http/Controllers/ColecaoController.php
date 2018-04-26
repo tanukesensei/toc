@@ -7,7 +7,8 @@ use toc\Colecao; //model
 use toc\Editora; // Model
 use toc\Categoria; // Model
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\DB; // acesso ao sql
+use Illuminate\Support\Facades\Auth; // acesso ao sql
 use toc\Http\Requests\UserRequest; // Request
 use toc\Http\Requests\ColecaoRequest; // Request
 use toc\Http\Requests\EditoraRequest; // Request
@@ -33,9 +34,10 @@ class ColecaoController extends Controller
      */
     public function create($id)
     {
+        $user = Auth::id();
         $categoria = Categoria::all();
         $editora = Editora::all();
-        return view('colecao.colCad')->with(array('categoria' => $categoria, 'editora' => $editora));
+        return view('colecao.colCad')->with(array('u' => $user, 'categoria' => $categoria, 'editora' => $editora));
     }
 
     /**
@@ -115,5 +117,15 @@ class ColecaoController extends Controller
         //
         Colecao::find($id)->delete();
         return redirect()->action('UserController@index');
+    }
+
+    public function dashboard()
+    {
+      if (Auth::id() != null) {
+        $user = Auth::id();// pega o id do usuário logado com muita alegria xD
+        $users = DB::select("select * from users where id = $user");
+        return view('layouts.dashboard')->with(array('u' => $user, 'users' => $users));
+      }
+      return redirect()->action('HomeController@index');
     }
 }
