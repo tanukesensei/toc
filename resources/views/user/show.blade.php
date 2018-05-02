@@ -12,9 +12,9 @@
       @endif
     </h3>
     <!--
-    <img src="{{Storage::url('avatar/DisHFMJw7p2kEl2bonhllmNSBBLcULE2xhY37O4I.png')}}" alt="">
     Exemplo de como exibir uma imagem estática.
     -->
+    <img src="{{Storage::url('avatar/DisHFMJw7p2kEl2bonhllmNSBBLcULE2xhY37O4I.png')}}" alt="">
     <img src="{{Storage::url($users->imagem)}}" alt="{{$users->imagem}}">
     <h4>Sobre Min: {{$users->descricao}}</h4>
     <h4>Minhas coleções:</h4>

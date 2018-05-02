@@ -69,7 +69,7 @@
   	    	<div class="sidebar-wrapper">
   	            <ul class="nav">
   	                <li class="active">
-                        <a href="#">
+                        <a href="/usuario">
   	                        <i class="material-icons">home</i>
   	                        <p>Página principal</p>
 
@@ -81,20 +81,20 @@
   	                        <p>Minhas coleções</p>
   	                    </a>
 												<ul class="luan">
-													<li><a href="#">
-	  	                        <i class="material-icons">apps</i>
+													<li><a href="/colecao/livros/{{$u}}">
+	  	                        <i class="material-icons">book</i>
 	  	                        <p>Livros</p>
 	  	                    </a></li>
-													<li><a href="#">
-	  	                        <i class="material-icons">apps</i>
+													<li><a href="/colecao/revistas/{{$u}}">
+	  	                        <i class="material-icons">developer_board</i>
 	  	                        <p>Revistas</p>
 	  	                    </a></li>
-													<li><a href="#">
-	  	                        <i class="material-icons">apps</i>
+													<li><a href="/colecao/mangas/{{$u}}">
+	  	                        <i class="material-icons">burst_mode</i>
 	  	                        <p>Mangás</p>
 	  	                    </a></li>
-													<li><a href="#">
-	  	                        <i class="material-icons">apps</i>
+													<li><a href="/colecao/hqs/{{$u}}">
+	  	                        <i class="material-icons">high_quality</i>
 	  	                        <p>HQ's</p>
 	  	                    </a></li>
 												</ul>
@@ -131,8 +131,7 @@
   							<span class="icon-bar"></span>
   							<span class="icon-bar"></span>
   							<span class="icon-bar"></span>
-  						</button>
-  						<a class="navbar-brand" href="#">Home</a>
+	  						</button>
   					</div>
   					<div class="collapse navbar-collapse">
   						<ul class="nav navbar-nav navbar-right">

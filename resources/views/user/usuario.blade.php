@@ -16,7 +16,8 @@
               <div class="card-footer">
                 <a href="#"></a>
                 <div class="stats">
-                   <i class="material-icons text-primary">find_in_page</i><a href="#">Visualizar</a>
+                   <i class="material-icons text-primary">find_in_page</i>
+                   <a href="/colecao/livros/{{$u}}">Visualizar</a>
                 </div>
               </div>
             </div>
@@ -33,7 +34,8 @@
               </div>
               <div class="card-footer">
                 <div class="stats">
-                  <i class="material-icons text-primary">find_in_page</i> <a href="#">Visualizar</a>
+                  <i class="material-icons text-primary">find_in_page</i>
+                  <a href="/colecao/revistas/{{$u}}">Visualizar</a>
                 </div>
               </div>
             </div>
@@ -50,7 +52,7 @@
               </div>
               <div class="card-footer">
                 <div class="stats">
-                  <i class="material-icons text-primary">find_in_page</i> <a href="#">Visualizar</a>
+                  <i class="material-icons text-primary">find_in_page</i> <a href="/colecao/mangas/{{$u}}">Visualizar</a>
                 </div>
               </div>
             </div>
@@ -67,7 +69,8 @@
               </div>
               <div class="card-footer">
                 <div class="stats">
-                  <i class="material-icons text-primary">find_in_page</i> <a href="#">Visualizar</a>
+                  <i class="material-icons text-primary">find_in_page</i>
+                  <a href="/colecao/hqs/{{$u}}">Visualizar</a>
                 </div>
               </div>
             </div>

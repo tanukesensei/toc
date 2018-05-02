@@ -128,4 +128,91 @@ class ColecaoController extends Controller
       }
       return redirect()->action('HomeController@index');
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    public function livros($id)
+    {
+      if (User::find($id) AND Auth::id()!=null)
+          {  //confirma o usuário logado
+
+            $usuario = Auth::id(); // pega o ID do usuário logado para passar para o Dashboard.
+            $users = User::find($id); //acha todas as informações do usuário
+            $user = $users->id; //repassa só o ID do usuário
+            $colecao = DB::select("select * from colecao where usuario = $user AND categoria = 1 order by nome asc"); // seleciona todas as coleções de livros desse usuário
+            //dd($colecao);
+            return view('colecao.colLivros')->with(array('u'=> $usuario, 'colecao' => $colecao));
+
+
+          } elseif (User::find($id)==null AND Auth::id()!=null) {
+            return "usuário não cadastrado.";
+          } else {
+            return redirect()->action('HomeController@index');
+          }
+    }
+
+    public function revistas($id)
+    {
+      if (User::find($id) AND Auth::id()!=null)
+          {  //confirma o usuário logado
+
+            $usuario = Auth::id(); // pega o ID do usuário logado para passar para o Dashboard.
+            $users = User::find($id); //acha todas as informações do usuário
+            $user = $users->id; //repassa só o ID do usuário
+            $colecao = DB::select("select * from colecao where usuario = $user AND categoria = 4 order by nome asc"); // seleciona todas as coleções de Revistas desse usuário
+            //dd($colecao);
+            return view('colecao.colRevistas')->with(array('u'=> $usuario, 'colecao' => $colecao));
+
+
+          } elseif (User::find($id)==null AND Auth::id()!=null) {
+            return "usuário não cadastrado.";
+          } else {
+            return redirect()->action('HomeController@index');
+          }
+    }
+
+    public function mangas($id)
+    {
+      if (User::find($id) AND Auth::id()!=null)
+      {  //confirma o usuário logado
+
+        $usuario = Auth::id();
+        $users = User::find($id); //acha todas as informações do usuário
+        $user = $users->id; //repassa só o ID do usuário
+        $colecao = DB::select("select * from colecao where usuario = $user AND categoria = 3 order by nome asc"); // seleciona todas as coleções de mangás desse usuário
+        //dd($colecao);
+        return view('colecao.colMangas')->with(array('u'=> $usuario, 'colecao' => $colecao));
+
+
+      } elseif (User::find($id)==null AND Auth::id()!=null) {
+        return "usuário não cadastrado.";
+      } else {
+        return redirect()->action('HomeController@index');
+      }
+    }
+
+    public function hqs($id)
+    {
+      if (User::find($id) AND Auth::id()!=null)
+      {  //confirma o usuário logado
+
+        $usuario = Auth::id();
+        $users = User::find($id); //acha todas as informações do usuário
+        $user = $users->id; //repassa só o ID do usuário
+        $colecao = DB::select("select * from colecao where usuario = $user AND categoria = 2 order by nome asc"); // seleciona todas as coleções de HQ's desse usuário
+        //dd($colecao);
+        return view('colecao.colHqs')->with(array('u'=> $usuario, 'colecao' => $colecao));
+
+
+      } elseif (User::find($id)==null AND Auth::id()!=null) {
+        return "usuário não cadastrado.";
+      } else {
+        return redirect()->action('HomeController@index');
+      }
+    }
 }

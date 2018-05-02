@@ -16,9 +16,10 @@ Route::get('/', function () {
 });
 
 // ROTA TESTE
-Route::get('teste', 'UserController@teste');
+//Route::get('teste', 'UserController@teste');
 
 // user rotas
+Route::get('/usuario', 'UserController@usuario');
 Route::get('/user/perfil', 'UserController@index'); // ok
 Route::get('/user/create', 'UserController@create');// ok
 Route::post('/user/store', 'UserController@store'); // ok
@@ -30,6 +31,10 @@ Route::get('user/destroy/{id}', 'UserController@destroy')->where('id', '[0-9]+')
 //Coleção rotas
 Route::get('colecao/create/{id}', 'ColecaoController@create')->where('id', '[0-9]+'); // ok
 Route::post('colecao/store','ColecaoController@store'); // ok
+Route::get('colecao/livros/{id}', 'ColecaoController@livros')->where('id', '[0-9]+'); //
+Route::get('colecao/revistas/{id}', 'ColecaoController@revistas')->where('id', '[0-9]+'); // 
+Route::get('colecao/mangas/{id}', 'ColecaoController@mangas')->where('id', '[0-9]+'); // ok
+Route::get('colecao/hqs/{id}', 'ColecaoController@hqs')->where('id', '[0-9]+'); //
 Route::get('colecao/edit/{id}', 'ColecaoController@edit')->where('id', '[0-9]+'); // ok
 Route::put('colecao/update/{id}', 'ColecaoController@update')->where('id', '[0-9]+'); // ok
 Route::get('colecao/destroy/{id}', 'ColecaoController@destroy')->where('id', '[0-9]+'); // ok

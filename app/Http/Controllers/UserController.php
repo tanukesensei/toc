@@ -163,7 +163,7 @@ class UserController extends Controller
       return redirect()->action('UserController@index');
     }
 
-    public function teste()
+    public function usuario()
     {
       $id = Auth::id();
       $users = User::find($id);
@@ -173,17 +173,17 @@ class UserController extends Controller
       }
       $user = $users->id;
       $livros = DB::select("select * from colecao where usuario = $user AND categoria = 1");
-      $revistas = DB::select("select * from colecao where usuario = $user AND categoria = 2");
+      $hqs = DB::select("select * from colecao where usuario = $user AND categoria = 2");
       $mangas = DB::select("select * from colecao where usuario = $user AND categoria = 3");
-      $hqs = DB::select("select * from colecao where usuario = $user AND categoria = 4");
+      $revistas = DB::select("select * from colecao where usuario = $user AND categoria = 4");
       $totalLivros = count($livros);
       $totalRevistas = count($revistas);
       $totalMangas = count($mangas);
       $totalHqs = count($hqs);
       //dd(array($totalLivros, $totalRevistas, $totalMangas, $totalHqs));
 
-      //return view('user.teste')->with("mangas", $totalMangas); OK
-      return view('user.teste')->with(array('u' => $user, 'livros' => $totalLivros, 'revistas' => $totalRevistas, 'mangas' => $totalMangas, 'hqs' => $totalHqs));
+      //return view('user.usuario')->with("mangas", $totalMangas); OK
+      return view('user.usuario')->with(array('u' => $user, 'livros' => $totalLivros,  'hqs' => $totalHqs, 'mangas' => $totalMangas, 'revistas' => $totalRevistas));
     }
 
     public function dashboard()
