@@ -5,16 +5,16 @@
       <div class="row">
         <div class="col-sm-4 col-sm-offset-4">
           <h3>Edite suas informações</h3>
-          <form action="{{action('UserController@update', $u->id)}}" method="post" class="form-group">
+          <form action="{{action('UserController@update', $users->id)}}" method="post" class="form-group">
             {!! method_field('put') !!}
 
             <input type="hidden" name="_token" value="{{csrf_token()}}">
 
-              <input type="text" name="name" placeholder="Nome" value="{{$u->name}}" class="form-control">
+              <input type="text" name="name" placeholder="Nome" value="{{$users->name}}" class="form-control">
 
               <select class="form-control" name="genero">
-                <?php if (!empty($u->genero)){ ?>
-                <option value="{{$u->genero}}" selected disabled hidden>{{$u->genero}}</option>
+                <?php if (!empty($users->genero)){ ?>
+                <option value="{{$users->genero}}" selected disabled hidden>{{$users->genero}}</option>
                 <?php } else { ?>
                 <option value="" selected disabled hidden>Escolha seu Gênero</option>
                 <?php } ?>
@@ -23,12 +23,12 @@
                 <option value="M">Masculino</option>
                 <option value="O">Outro</option>
               </select>
-              <input type="text" name="datanascimento" placeholder="Data de Nascimento" value="{{$u->datanascimento}}" class="form-control">
-              <input type="text" name="cidade" placeholder="Cidade" value="{{$u->cidade}}" class="form-control">
+              <input type="text" name="datanascimento" placeholder="Data de Nascimento" value="{{$users->datanascimento}}" class="form-control">
+              <input type="text" name="cidade" placeholder="Cidade" value="{{$users->cidade}}" class="form-control">
 
               <select class="form-control" name="estado">
-                <?php if (!empty($u->estado)) { ?>
-                <option value="{{$u->estado}}" selected disabled hidden>{{$u->estado}}</option>
+                <?php if (!empty($users->estado)) { ?>
+                <option value="{{$users->estado}}" selected disabled hidden>{{$users->estado}}</option>
                 <?php } else { ?>
                 <option value="" selected disabled hidden>Estado</option>
                 <?php } ?>
@@ -63,8 +63,8 @@
                 <option value="TO">TO</option>
               </select>
 
-              <input type="text" name="email" placeholder="E-mail" value="{{$u->email}}" class="form-control">
-              <input type="text" name="username" placeholder="Nome de Usuário" value="{{$u->username}}" class="form-control">
+              <input type="text" name="email" placeholder="E-mail" value="{{$users->email}}" class="form-control">
+              <input type="text" name="username" placeholder="Nome de Usuário" value="{{$users->username}}" class="form-control">
               <button type="submit" class="btn btn-primary btn-block" name="button">Atualizar</button>
 
           </form>

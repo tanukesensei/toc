@@ -2,17 +2,27 @@
 
 namespace toc\Http\Controllers;
 
-use toc\User; // Model
+use toc\Autor; // Model
+use toc\Categoria; // Model
 use toc\Colecao; //model
 use toc\Editora; // Model
-use toc\Categoria; // Model
+use toc\Hq; // Model
+use toc\Livro; // Model
+use toc\Manga; // Model
+use toc\Revista; // Model
+use toc\User; // Model
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; // acesso ao sql
 use Illuminate\Support\Facades\Auth; // acesso ao sql
-use toc\Http\Requests\UserRequest; // Request
+use toc\Http\Requests\AutorRequest; // Request
+use toc\Http\Requests\CategoriaRequest; // Request
 use toc\Http\Requests\ColecaoRequest; // Request
 use toc\Http\Requests\EditoraRequest; // Request
-use toc\Http\Requests\CategoriaRequest; // Request
+use toc\Http\Requests\HqRequest; // Request
+use toc\Http\Requests\LivroRequest; // Request
+use toc\Http\Requests\MangaRequest; // Request
+use toc\Http\Requests\RevistaRequest; // Request
+use toc\Http\Requests\UserRequest; // Request
 
 class ColecaoController extends Controller
 {
@@ -38,6 +48,7 @@ class ColecaoController extends Controller
         $categoria = Categoria::all();
         $editora = Editora::all();
         return view('colecao.colCad')->with(array('u' => $user, 'categoria' => $categoria, 'editora' => $editora));
+
     }
 
     /**
@@ -59,6 +70,41 @@ class ColecaoController extends Controller
         $colecao->imagem = $path;
         $colecao->update();
         // O update é realizado.
+        $autor = $colecao->autor;
+        $Autor = new Autor ;
+        $Autor->nome = $autor;
+        $Autor->save();
+
+        $autorId = DB::table('autor')->select('id')->orderBy('id', 'desc')->limit(1)->get();
+        $autor = $autorId[0]->id;
+
+// FUNCIONANDO DAQUI PRA CIMA E O CATEGORIA 3
+        $categoria = $colecao->categoria;
+        if($categoria = 1){
+          // code...
+        }
+        if ($categoria = 2) {
+          // code...
+        }
+        if ($categoria = 3) {
+           $mangas = new Manga;
+           $mangas->titulo = $colecao->nome;
+           $mangas->descricao = $colecao->descricao;
+           $mangas->numeropag = $colecao->mediapag;
+           $mangas->numeroedicao = $colecao->numedicoes;
+           $mangas->isbn = $colecao->isbn;
+           $mangas->colecao = $id;
+           $mangas->autor = $autor;
+           $mangas->editora_id = $colecao->editora;
+           $mangas->save();
+        }
+        if ($categoria = 4) {
+          // code...
+        }
+
+
+
+
         return redirect()->action('UserController@index');
     }
 
@@ -85,8 +131,13 @@ class ColecaoController extends Controller
         if (empty($col)) {
           return  "Coleção não cadastrada.";
         }
+        $user = Auth::id();
+        //$colecao = DB::select("select * from colecao where usuario = $user order by id desc");
+        //dd($colecao);
         $categoria = Categoria::all();
-        return view('colecao.colEdit')->with(array('col' => $col, 'categoria' => $categoria));
+        $editora = Editora::all();
+        return view('colecao.colEdit')->with(array('u' => $user, 'col' => $col, 'categoria' => $categoria,
+      'editora' => $editora));
     }
 
     /**

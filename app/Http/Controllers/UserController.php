@@ -2,13 +2,17 @@
 
 namespace toc\Http\Controllers;
 
-use toc\User; // Model
+use toc\Autor; // Model
 use toc\Colecao; // Model
+use toc\Editora;
+use toc\Manga; // Model
+use toc\User; // Model
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; // acesso ao sql
 use Illuminate\Support\Facades\Auth; // acesso ao sql
-use toc\Http\Requests\UserRequest; // Request
+use toc\Http\Requests\MangaRequest;
 use toc\Http\Requests\ColecaoRequest; //Request
+use toc\Http\Requests\UserRequest; // Request
 
 class UserController extends Controller
 {
@@ -103,13 +107,13 @@ class UserController extends Controller
     public function edit($id)
     {
       if (Auth::id() != null) {
-        $usuario = Auth::id();
+        $user = Auth::id();
 
         $users = User::find($id);
         if (empty($users)) {
           return  "Usuário não cadastrado.";
         }
-          return view('user.userEdit')->with(array('u'=>$usuario, 'u'=> $users));
+          return view('user.userEdit')->with(array('u'=>$user, 'users'=> $users));
       }
       else
       {
