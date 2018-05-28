@@ -130,7 +130,7 @@ class ColecaoController extends Controller
           $revistas->save();
         }
 
-        return redirect()->action('UserController@index');
+        return redirect()->action('UserController@usuario');
     }
 
     /**
