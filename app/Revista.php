@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Revista extends Model
 {
-    protected $table = 'revista';
+    protected $table = 'revistas';
 
   protected $fillable = array('titulo', 'descricao', 'numeroedicao', 'colecao', 'autor', 'editora_id');
 

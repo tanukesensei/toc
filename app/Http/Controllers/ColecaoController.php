@@ -78,16 +78,34 @@ class ColecaoController extends Controller
         $autorId = DB::table('autor')->select('id')->orderBy('id', 'desc')->limit(1)->get();
         $autor = $autorId[0]->id;
 
-// FUNCIONANDO DAQUI PRA CIMA E O CATEGORIA 3
         $categoria = $colecao->categoria;
-        if($categoria = 1){
-          // code...
+        if($categoria == 1){
+          $livros = new Livro();
+          $livros->titulo = $colecao->nome;
+          $livros->sinopse = $colecao->descricao;
+          $livros->numeropag = $colecao->mediapag;
+          //$livros->numeroedicao = $colecao->numedicoes;
+          $livros->isbn = $colecao->isbn;
+          $livros->colecao = $id;
+          $livros->autor = $autor;
+          $livros->editora_id = $colecao->editora;
+          $livros->save();
         }
-        if ($categoria = 2) {
+        if ($categoria == 2) {
           // code...
+          $hqs = new HQ();
+          $hqs->titulo = $colecao->nome;
+          $hqs->descricao = $colecao->descricao;
+          //$hqs->numeropag = $colecao->mediapag; // marcer de novo depois
+          $hqs->numeroedicao = $colecao->numedicoes;
+          //$hqs->isbn = $colecao->isbn; // marcer de novo depois
+          $hqs->colecao = $id;
+          $hqs->autor = $autor;
+          $hqs->editora_id = $colecao->editora;
+          $hqs->save();
         }
-        if ($categoria = 3) {
-           $mangas = new Manga;
+        if ($categoria == 3) {
+           $mangas = new Manga();
            $mangas->titulo = $colecao->nome;
            $mangas->descricao = $colecao->descricao;
            $mangas->numeropag = $colecao->mediapag;
@@ -98,12 +116,19 @@ class ColecaoController extends Controller
            $mangas->editora_id = $colecao->editora;
            $mangas->save();
         }
-        if ($categoria = 4) {
+        if ($categoria == 4) {
           // code...
+          $revistas = new Revista();
+          $revistas->titulo = $colecao->nome;
+          $revistas->descricao = $colecao->descricao;
+          //$revistas->numeropag = $colecao->mediapag;
+          $revistas->numeroedicao = $colecao->numedicoes;
+          //$revistas->isbn = $colecao->isbn;
+          $revistas->colecao = $id;
+          $revistas->autor = $autor;
+          $revistas->editora_id = $colecao->editora;
+          $revistas->save();
         }
-
-
-
 
         return redirect()->action('UserController@index');
     }
