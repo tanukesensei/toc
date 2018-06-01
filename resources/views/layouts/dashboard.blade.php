@@ -17,6 +17,7 @@
 	</style>
 
   	<meta charset="utf-8" />
+  	<link rel="apple-touch-icon" sizes="76x76" href="{{ asset('imagens/sidebar/apple-icon.png') }}" />
   	<link rel="icon" type="image/png" href="{{ asset('resources/assets/material-dashboard/assets/img/favicon.png') }}" />
   	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
@@ -45,7 +46,8 @@
     <!--     Fonts and icons  -- Dashboard   -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
-
+    <link href='http://fonts.googleapis.com/css?family=Playfair+Display|Raleway:700,100,400|Roboto:400,700|Playfair+Display+SC:400,700' rel='stylesheet' type='text/css'>
+       
   <!--
     <style>
         .card{
@@ -266,10 +268,8 @@ document.addEventListener('DOMContentLoaded', function loadOpenableLi () {
   <script src="{{ asset('js/material.min.js') }}" type="text/javascript"></script>
 
   <!-- Cards JS Files -->
-
   <script src="{{ asset('js/hipster-cards.js') }}" type="text/javascript"></script>
-  <script src="{{ asset('js/jquery-1.10.2.js') }}" type="text/javascript"></script>
- 
+
   <!-- End of JS Cards Files -->
 
  	<!--  Charts Plugin -->

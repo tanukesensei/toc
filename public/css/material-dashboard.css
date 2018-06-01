@@ -3576,7 +3576,7 @@ footer .btn {
   margin: -20px 15px 0;
   border-radius: 3px;
   padding: 15px;
-  background-color: #999999;
+  background-color: #9C27B0;
 }
 .card .card-header .title {
   color: #FFFFFF;
@@ -3655,7 +3655,7 @@ footer .btn {
 }
 .card .category .material-icons {
   position: relative;
-  top: 6px;
+  top: 8px;
   line-height: 0;
 }
 .card .category-social .fa {
