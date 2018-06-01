@@ -3,39 +3,38 @@
 <head>
 
 	<style media="screen">
-		.sidebar-wrapper .nav li ul{
-			display: none;
-
-		}
-		.sidebar-wrapper .nav li:hover> ul{
-			display: block;
-			list-style: none;
-			transition: max-height 0.2s ease-out;
-
-		}
-		.jojo{
-			display: block;
-
-		}
+		.sidebar-wrapper .nav .openable-li ul {
+      display: none;
+      transition: max-height 0.2s ease-out;
+      list-style: none;
+    }
+    .sidebar-wrapper .nav .openable-li ul li {
+      margin: 0 0 25px;
+    }
+    .sidebar-wrapper .nav .openable-li.is-open ul {
+      display: block; 
+    }
 	</style>
-	<meta charset="utf-8" />
-	<link rel="apple-touch-icon" sizes="76x76" href="{{ asset('resources/assets/material-dashboard/assets/img/apple-icon.png') }}" />
-	<link rel="icon" type="image/png" href="{{ asset('resources/assets/material-dashboard/assets/img/favicon.png') }}" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<!-- CSRF Token -->
-	<meta name="csrf-token" content="{{ csrf_token() }}">
+  	<meta charset="utf-8" />
+  	<link rel="icon" type="image/png" href="{{ asset('resources/assets/material-dashboard/assets/img/favicon.png') }}" />
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>{{ config('app.name', 'Laravel') }}</title>
+  	<!-- CSRF Token -->
+  	<meta name="csrf-token" content="{{ csrf_token() }}">
 
-	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+	  <title>{{ config('app.name', 'Laravel') }}</title>
+
+	  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
 
     <!-- Bootstrap core CSS     -->
     <link href="{{ asset('css/bootstrap.min.css') }}"
 		C:\Bitnami\wapp7\apache2\htdocs\toc\public\css rel="stylesheet" />
-    <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
+
+    <!-- Hispters Card-->
+    <link href="{{ asset('css/hipster_cards.css') }}" rel="stylesheet"/>
 
     <!--  Material Dashboard CSS    -->
     <link href="{{ asset('css/material-dashboard.css') }}" rel="stylesheet"/>
@@ -43,9 +42,18 @@
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="{{ asset('css/demo.css') }}" rel="stylesheet" />
 
-    <!--     Fonts and icons     -->
+    <!--     Fonts and icons  -- Dashboard   -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+
+  <!--
+    <style>
+        .card{
+            margin-bottom: 70px;
+        }
+    </style>
+
+  -->
 </head>
 
 <body>
@@ -75,27 +83,27 @@
 
   	                    </a>
   	                </li>
-  									<li>
+  									<li class="openable-li">
   	                    <a href="#">
   	                        <i class="material-icons">apps</i>
   	                        <p>Minhas coleções</p>
   	                    </a>
-												<ul class="luan">
+												<ul>
 													<li><a href="/colecao/livros/{{$u}}">
 	  	                        <i class="material-icons">book</i>
-	  	                        <p>Livros</p>
+	  	                        <span>Livros</span>
 	  	                    </a></li>
 													<li><a href="/colecao/revistas/{{$u}}">
 	  	                        <i class="material-icons">developer_board</i>
-	  	                        <p>Revistas</p>
+	  	                        <span>Revistas</span>
 	  	                    </a></li>
 													<li><a href="/colecao/mangas/{{$u}}">
 	  	                        <i class="material-icons">burst_mode</i>
-	  	                        <p>Mangás</p>
+	  	                        <span>Mangás</span>
 	  	                    </a></li>
 													<li><a href="/colecao/hqs/{{$u}}">
 	  	                        <i class="material-icons">high_quality</i>
-	  	                        <p>HQ's</p>
+	  	                        <span>HQ's</span>
 	  	                    </a></li>
 												</ul>
   	                </li>
@@ -223,30 +231,48 @@
 </body>
 <!--PQP O rIAN TÁ ME DEVENDO ESSA-->
 <script>
-var acc = document.getElementsByClassName("luan");
-var i;
+document.addEventListener('DOMContentLoaded', function loadOpenableLi () {
+  var openableLiArr = document.querySelectorAll('.openable-li')
 
-for (i = 0; i < acc.length; i++) {
-acc[i].addEventListener("click", function() {
-	this.classList.toggle("jojo");
-	var panel = this.nextElementSibling;
-	if (panel.style.maxHeight){
-		panel.style.maxHeight = null;
-	} else {
-		panel.style.maxHeight = panel.scrollHeight + "px";
-	}
-});
-}
+  for (var i = 0; i < openableLiArr.length; i++) {
+    var openableLi = openableLiArr[i]
+    openableLi.addEventListener('click', function onClickOpenableLi () {
+      openableLi.classList.toggle('is-open')
+    })
+  }
+  console.log({openableLiArr})
+})
+
+
+// var acc = document.getElementsByClassName("luan");
+// var i;
+
+// for (i = 0; i < acc.length; i++) {
+// acc[i].addEventListener("click", function() {
+// 	this.classList.toggle("jojo");
+// 	var panel = this.nextElementSibling;
+// 	if (panel.style.maxHeight){
+// 		panel.style.maxHeight = null;
+// 	} else {
+// 		panel.style.maxHeight = panel.scrollHeight + "px";
+// 	}
+// });
+// }
 </script>
-
-
 
 	<!--   Core JS Files   -->
 	<script src="{{ asset('js/jquery-3.1.0.min.js') }}" type="text/javascript"></script>
-	<script src="{{ asset('js/bootstrap.min.js') }}" type="text/javascript"></script>
-	<script src="{{ asset('js/material.min.js') }}" type="text/javascript"></script>
+  <script src="{{ asset('js/bootstrap.min.js') }}" type="text/javascript"></script>
+  <script src="{{ asset('js/material.min.js') }}" type="text/javascript"></script>
 
-	<!--  Charts Plugin -->
+  <!-- Cards JS Files -->
+
+  <script src="{{ asset('js/hipster-cards.js') }}" type="text/javascript"></script>
+  <script src="{{ asset('js/jquery-1.10.2.js') }}" type="text/javascript"></script>
+ 
+  <!-- End of JS Cards Files -->
+
+ 	<!--  Charts Plugin -->
 	<script src="{{ asset('js/chartist.min.js') }}"></script>
 
 	<!--  Notifications Plugin    -->
@@ -258,8 +284,6 @@ acc[i].addEventListener("click", function() {
 	<!-- Material Dashboard javascript methods -->
 	<script src="{{ asset('js/material-dashboard.js') }}"></script>
 
-	<!-- Material Dashboard DEMO methods, don't include it in your project! -->
-	<script src="{{ asset('js/demo.js') }}"></script>
 
 
 </html>
