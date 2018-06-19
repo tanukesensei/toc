@@ -3655,7 +3655,7 @@ footer .btn {
 }
 .card .category .material-icons {
   position: relative;
-  top: 8px;
+  top: -1px;
   line-height: 0;
 }
 .card .category-social .fa {

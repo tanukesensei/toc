@@ -18,15 +18,18 @@
                 	<div class="card" data-background="image" data-src="{{ Storage::url($c->imagem) }}" alt="{{$c->imagem}}">
                     <div class="header">
                         <div class="category">
-                            <h6 class="label label-danger">
-                            <i class="material-icons">settings_applications</i>
-                            </h6>
+                            <a href="/colecao/edit/{{ $c->id }}">
+                            	<h6 class="label label-danger">
+                            		<i class="material-icons">settings_applications</i>
+                            	</h6>
+                            </a>
                         </div>
                     </div>
                     
                     <div class="content">
                         <h4 class="title title-uppercase">
-                            <a href="{{$c->nome }}">{{$c->nome }}</a>
+                        	<!--  Trocar por {{$c->id }} quando a página de exibir capas estiver pronta. -->
+                            <a href="#">{{$c->nome }}</a>
                         </h4>
                 	<p class="description">{{$c->descricao}}</p>
                     </div>                            
