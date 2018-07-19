@@ -2,11 +2,14 @@
 
 namespace toc;
 
+use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
 
 class Livro extends Model
 {
-    protected $table = 'livros';
+  use Searchable;
+
+  protected $table = 'livros';
 
   protected $fillable = array('titulo', 'sinopse', 'numeropag',
    'isbn', 'colecao', 'autor', 'editora_id');
