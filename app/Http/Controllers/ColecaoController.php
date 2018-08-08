@@ -291,4 +291,9 @@ class ColecaoController extends Controller
         return redirect()->action('HomeController@index');
       }
     }
+
+    public function buscar($value='')
+    {
+      // code... 
+    }
 }
