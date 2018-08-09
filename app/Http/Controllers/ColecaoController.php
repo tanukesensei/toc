@@ -292,8 +292,8 @@ class ColecaoController extends Controller
       }
     }
 
-    public function buscar($value='')
+    public function buscar(ColecaoRequest $busca)
     {
-      // code... 
+      // code...
     }
 }
