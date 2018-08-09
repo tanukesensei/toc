@@ -294,6 +294,13 @@ class ColecaoController extends Controller
 
     public function buscar(ColecaoRequest $busca)
     {
-      // code...
+      $pesquisar = $busca->busca;
+      //dd($pesquisar);
+
+      $resultado = DB::select("select nome, autor from colecao where nome ilike '%$pesquisar%' OR autor ilike '%$pesquisar%'");
+
+      dd($resultado);
+
+      // TERMINAR ESSA CARAMBA!!
     }
 }

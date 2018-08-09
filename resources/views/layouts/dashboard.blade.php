@@ -12,7 +12,7 @@
       margin: 0 0 25px;
     }
     .sidebar-wrapper .nav .openable-li.is-open ul {
-      display: block; 
+      display: block;
     }
 	</style>
 
@@ -47,7 +47,7 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Playfair+Display|Raleway:700,100,400|Roboto:400,700|Playfair+Display+SC:400,700' rel='stylesheet' type='text/css'>
-       
+
   <!--
     <style>
         .card{
@@ -178,9 +178,10 @@
   							</li>
   						</ul>
 
-  						<form class="navbar-form navbar-right" role="search">
+  						<form class="navbar-form navbar-right" role="search" method="get" action="colecao/buscar" >
   							<div class="form-group  is-empty">
-  	                        	<input type="text" class="form-control" placeholder="Pesquisar">
+															<input type="hidden" name="_token" value="{{csrf_token()}}">
+															<input type="text" class="form-control" name="busca" placeholder="Pesquisar">
   	                        	<span class="material-input"></span>
   							</div>
   							<button type="submit" class="btn btn-white btn-round btn-just-icon">
