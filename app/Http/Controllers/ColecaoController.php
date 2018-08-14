@@ -295,11 +295,13 @@ class ColecaoController extends Controller
     public function buscar(ColecaoRequest $busca)
     {
       $pesquisar = $busca->busca;
-      //dd($pesquisar);
+      $usuario = Auth::id();
 
-      $resultado = DB::select("select nome, autor from colecao where nome ilike '%$pesquisar%' OR autor ilike '%$pesquisar%'");
+      $resultado = DB::select("select * from colecao where nome ilike '%$pesquisar%' OR autor ilike '%$pesquisar%'");
 
-      dd($resultado);
+      //dd($resultado);
+
+      return view('busca.resultado')->with(array('resultado' => $resultado, 'u' => $usuario));
 
       // TERMINAR ESSA CARAMBA!!
     }
