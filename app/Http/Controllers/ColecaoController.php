@@ -301,7 +301,7 @@ class ColecaoController extends Controller
 
       //dd($resultado);
 
-      return view('busca.resultado')->with(array('resultado' => $resultado, 'u' => $usuario));
+      return view('colecao.resultado')->with(array('resultado' => $resultado, 'u' => $usuario));
 
       // TERMINAR ESSA CARAMBA!!
     }

@@ -177,8 +177,8 @@
   								 </ul>
   							</li>
   						</ul>
-
-  						<form class="navbar-form navbar-right" role="search" method="get" action="colecao/buscar" >
+					<form class="navbar-form navbar-right" role="search" method="get" action="{{route('buscar')}}">
+						<!--renomeei a rota da busca, assim vai funncionar em qualquer parte do projeto o/-->
   							<div class="form-group  is-empty">
 															<input type="hidden" name="_token" value="{{csrf_token()}}">
 															<input type="text" class="form-control" name="busca" placeholder="Pesquisar">
