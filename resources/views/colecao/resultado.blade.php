@@ -15,8 +15,8 @@
 <div class="card">
 		<div class="card-header card-header-primary card-colecao" color="white" ><h4>Resultados:</h4></div>
 
-			@foreach ($resultado as $r)
-    
+			@forelse ($resultado as $r)
+
 			<div class="card-box col-md-4 col-sm-6">
                 	<div class="card" data-background="image" data-src="{{ Storage::url($r->imagem) }}" alt="{{$r->imagem}}">
                     <div class="header">
@@ -38,7 +38,9 @@
                 </div>
 		<!-- end card -->
             </div>
-			@endforeach
+				@empty
+				<h1> Ops, parace que a coleção ainda não foi cadastrada ¯\_(ツ)_/¯... </h1>
+			@endforelse
 </div>
 
 	</div>
