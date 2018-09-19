@@ -21,7 +21,19 @@
                 	<div class="card" data-background="image" data-src="{{ Storage::url($r->imagem) }}" alt="{{$r->imagem}}">
                     <div class="header">
                         <div class="category">
-
+													@if ($r->usuario == $u)
+													<a href="/colecao/edit/{{ $r->id }}">
+														<h6 class="label label-danger">
+															<i class="material-icons">settings_applications</i>
+														</h6>
+													</a>
+													@else
+													<a href="#">
+														<h6 class="label label-danger">
+															<i class="material-icons">library_add</i>
+														</h6>
+													</a>
+													@endif
                         </div>
                     </div>
 
