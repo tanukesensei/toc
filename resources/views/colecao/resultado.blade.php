@@ -29,7 +29,7 @@
 													</a>
 													@else
 													<a href="#">
-														<h6 class="label label-danger">
+														<h6 class="label label-info">
 															<i class="material-icons">library_add</i>
 														</h6>
 													</a>
