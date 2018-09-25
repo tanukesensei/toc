@@ -38,8 +38,8 @@ Route::get('colecao/hqs/{id}', 'ColecaoController@hqs')->where('id', '[0-9]+'); 
 Route::get('colecao/edit/{id}', 'ColecaoController@edit')->where('id', '[0-9]+'); // ok
 Route::put('colecao/update/{id}', 'ColecaoController@update')->where('id', '[0-9]+'); // ok
 Route::get('colecao/destroy/{id}', 'ColecaoController@destroy')->where('id', '[0-9]+'); // ok
-
 Route::get('colecao/buscar', 'ColecaoController@buscar')->name('buscar');
+Route::get('colecao/add/{id}', 'ColecaoController@adicionar');
 
 //Route::get('manga/create', 'MangaController@create');
 //Route::get('manga/create/{id}', 'MangaController@create');
