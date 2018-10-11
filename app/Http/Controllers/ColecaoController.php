@@ -11,6 +11,7 @@ use toc\Livro; // Model
 use toc\Manga; // Model
 use toc\Revista; // Model
 use toc\User; // Model
+use toc\UsuarioColecao; // Model
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; // acesso ao sql
 use Illuminate\Support\Facades\Auth; // acesso ao sql
@@ -23,6 +24,7 @@ use toc\Http\Requests\LivroRequest; // Request
 use toc\Http\Requests\MangaRequest; // Request
 use toc\Http\Requests\RevistaRequest; // Request
 use toc\Http\Requests\UserRequest; // Request
+use toc\Http\Requests\UsuarioColecaoRequest; // Request
 
 class ColecaoController extends Controller
 {
@@ -78,6 +80,11 @@ class ColecaoController extends Controller
         $autorId = DB::table('autor')->select('id')->orderBy('id', 'desc')->limit(1)->get();
         $autor = $autorId[0]->id;
 
+        $uc = new UsuarioColecao();
+        $uc->id_usuario = Auth::id();
+        $uc->id_colecao = $id;
+        $uc->save();
+
         $categoria = $colecao->categoria;
         if($categoria == 1){
           $livros = new Livro();
@@ -128,6 +135,8 @@ class ColecaoController extends Controller
           $revistas->autor = $autor;
           $revistas->editora_id = $colecao->editora;
           $revistas->save();
+
+
         }
 
         return redirect()->action('UserController@usuario');
@@ -220,7 +229,10 @@ class ColecaoController extends Controller
             $usuario = Auth::id(); // pega o ID do usuário logado para passar para o Dashboard.
             $users = User::find($id); //acha todas as informações do usuário
             $user = $users->id; //repassa só o ID do usuário
-            $colecao = DB::select("select * from colecao where usuario = $user AND categoria = 1 order by nome asc"); // seleciona todas as coleções de livros desse usuário
+            $colecao = DB::select("select colecao.* from colecao join usuario_colecaos
+              on colecao.id=usuario_colecaos.id_colecao
+              and usuario_colecaos.id_usuario = $user
+              and categoria = 1 order by colecao.nome asc"); // seleciona todas as coleções de livros desse usuário
             //dd($colecao);
             return view('colecao.colLivros')->with(array('u'=> $usuario, 'colecao' => $colecao));
 
@@ -240,7 +252,10 @@ class ColecaoController extends Controller
             $usuario = Auth::id(); // pega o ID do usuário logado para passar para o Dashboard.
             $users = User::find($id); //acha todas as informações do usuário
             $user = $users->id; //repassa só o ID do usuário
-            $colecao = DB::select("select * from colecao where usuario = $user AND categoria = 4 order by nome asc"); // seleciona todas as coleções de Revistas desse usuário
+            $colecao = DB::select("select colecao.* from colecao join usuario_colecaos
+              on colecao.id=usuario_colecaos.id_colecao
+              and usuario_colecaos.id_usuario = $user
+              and categoria = 4 order by colecao.nome asc"); // seleciona todas as coleções de Revistas desse usuário
             //dd($colecao);
             return view('colecao.colRevistas')->with(array('u'=> $usuario, 'colecao' => $colecao));
 
@@ -260,7 +275,10 @@ class ColecaoController extends Controller
         $usuario = Auth::id();
         $users = User::find($id); //acha todas as informações do usuário
         $user = $users->id; //repassa só o ID do usuário
-        $colecao = DB::select("select * from colecao where usuario = $user AND categoria = 3 order by nome asc"); // seleciona todas as coleções de mangás desse usuário
+        $colecao = DB::select("select colecao.* from colecao join usuario_colecaos
+          on colecao.id=usuario_colecaos.id_colecao
+          and usuario_colecaos.id_usuario = $user
+          and categoria = 3 order by colecao.nome asc"); // seleciona todas as coleções de mangás desse usuário
         //dd($colecao);
         return view('colecao.colMangas')->with(array('u'=> $usuario, 'colecao' => $colecao));
 
@@ -280,7 +298,10 @@ class ColecaoController extends Controller
         $usuario = Auth::id();
         $users = User::find($id); //acha todas as informações do usuário
         $user = $users->id; //repassa só o ID do usuário
-        $colecao = DB::select("select * from colecao where usuario = $user AND categoria = 2 order by nome asc"); // seleciona todas as coleções de HQ's desse usuário
+        $colecao = DB::select("select colecao.* from colecao join usuario_colecaos
+          on colecao.id=usuario_colecaos.id_colecao
+          and usuario_colecaos.id_usuario = $user
+          and categoria = 2 order by colecao.nome asc"); // seleciona todas as coleções de HQ's desse usuário
         //dd($colecao);
         return view('colecao.colHqs')->with(array('u'=> $usuario, 'colecao' => $colecao));
 
@@ -302,8 +323,13 @@ class ColecaoController extends Controller
       return view('colecao.resultado')->with(array('resultado' => $resultado, 'u' => $usuario));
     }
 
-    public function adicionar()
+    public function adicionar($id)
     {
-      // FAZER A TABLEA USANDO MIGRATIONS E DEPOIS VONCILAR OS id DO user COM colecao
+      $uc = new UsuarioColecao();
+      $uc->id_usuario = Auth::id();
+      $uc->id_colecao = $id;
+      $uc->save();
+
+        return redirect()->action('HomeController@index');
     }
 }

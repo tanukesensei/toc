@@ -17,23 +17,16 @@
 
 			@forelse ($resultado as $r)
 
+			@if ($r->usuario == $u)
 			<div class="card-box col-md-4 col-sm-6">
                 	<div class="card" data-background="image" data-src="{{ Storage::url($r->imagem) }}" alt="{{$r->imagem}}">
                     <div class="header">
                         <div class="category">
-													@if ($r->usuario == $u)
 													<a href="/colecao/edit/{{ $r->id }}">
 														<h6 class="label label-danger">
 															<i class="material-icons">settings_applications</i>
 														</h6>
 													</a>
-													@else
-													<a href="/colecao/add/{{ $r->id }}">
-														<h6 class="label label-info">
-															<i class="material-icons">library_add</i>
-														</h6>
-													</a>
-													@endif
                         </div>
                     </div>
 
@@ -50,6 +43,34 @@
                 </div>
 		<!-- end card -->
             </div>
+						@elseif($r->usuario != $u)
+						<div class="card-box col-md-4 col-sm-6">
+			                	<div class="card" data-background="image" data-src="{{ Storage::url($r->imagem) }}" alt="{{$r->imagem}}">
+			                    <div class="header">
+			                        <div class="category">
+																<a href="/colecao/add/{{ $r->id }}">
+																	<h6 class="label label-info">
+																		<i class="material-icons">library_add</i>
+																	</h6>
+																</a>
+			                        </div>
+			                    </div>
+
+			                    <div class="content">
+			                        <h4 class="title title-uppercase">
+			                        	<!--  Trocar por {{$r->id }} quando a página de exibir capas estiver pronta. -->
+			                            <a href="#">{{$r->nome }}</a>
+			                        </h4>
+			                	<p class="description">{{$r->descricao}}</p>
+			                    </div>
+			                    <div class="filter">
+
+			                    </div>
+			                </div>
+					<!-- end card -->
+			            </div>
+						@endif
+
 				@empty
 				<h1> Ops, parace que a coleção ainda não foi cadastrada ¯\_(ツ)_/¯... </h1>
 			@endforelse
