@@ -318,8 +318,23 @@ class ColecaoController extends Controller
       $pesquisar = $busca->busca; //$pesquisar recebe a busca
       $usuario = Auth::id();
 
-      $resultado = DB::select("select * from colecao where nome ilike '%$pesquisar%' OR autor ilike '%$pesquisar%'");
-      // A pesquisa é feita pelo nome da obra ou nome do autor, e depois é retornada para a página de Resultados
+      /*
+      $resultado = DB::select("select colecao.*, usuario_colecaos.* from colecao join usuario_colecaos on
+      colecao.id != usuario_colecaos.id_colecao AND usuario_colecaos.id_usuario != $usuario
+      and colecao.nome ilike '%$pesquisar%'
+      OR
+      colecao.id != usuario_colecaos.id_colecao and usuario_colecaos.id_usuario != $usuario
+      and colecao.autor ilike '%$pesquisar%'");
+      */
+
+$resultado = DB::select("select * from colecao where id not in(select id_colecao from usuario_colecaos where id_usuario = $usuario)");
+
+
+      //$resultado = DB::select("select * from colecao where nome ilike '%$pesquisar%' OR autor ilike '%$pesquisar%'");
+
+      //$usuarioColecao = DB::select("select * from usuario_colecaos");
+      //A pesquisa é feita pelo nome da obra ou nome do autor, e depois é retornada para a página de Resultados
+      //dd($usuarioColecao);
       return view('colecao.resultado')->with(array('resultado' => $resultado, 'u' => $usuario));
     }
 
