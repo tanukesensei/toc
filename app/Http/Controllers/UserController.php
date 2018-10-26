@@ -176,10 +176,26 @@ class UserController extends Controller
         return redirect()->action('HomeController@index');
       }
       $user = $users->id;
-      $livros = DB::select("select * from colecao where usuario = $user AND categoria = 1");
-      $hqs = DB::select("select * from colecao where usuario = $user AND categoria = 2");
-      $mangas = DB::select("select * from colecao where usuario = $user AND categoria = 3");
-      $revistas = DB::select("select * from colecao where usuario = $user AND categoria = 4");
+      $livros = DB::select("select colecao.* from colecao
+        inner join usuario_colecaos on usuario_colecaos.id_colecao = colecao.id
+        inner join users u on u.id = usuario_colecaos.id_usuario
+        where u.id = $user and colecao.categoria = 1");
+
+      $hqs = DB::select("select colecao.* from colecao
+        inner join usuario_colecaos on usuario_colecaos.id_colecao = colecao.id
+        inner join users u on u.id = usuario_colecaos.id_usuario
+        where u.id = $user and colecao.categoria = 2");
+
+      $mangas = DB::select("select colecao.* from colecao
+        inner join usuario_colecaos on usuario_colecaos.id_colecao = colecao.id
+        inner join users u on u.id = usuario_colecaos.id_usuario
+        where u.id = $user and colecao.categoria = 3");
+
+      $revistas = DB::select("select colecao.* from colecao
+        inner join usuario_colecaos on usuario_colecaos.id_colecao = colecao.id
+        inner join users u on u.id = usuario_colecaos.id_usuario
+        where u.id = $user and colecao.categoria = 4");
+        
       $totalLivros = count($livros);
       $totalRevistas = count($revistas);
       $totalMangas = count($mangas);
