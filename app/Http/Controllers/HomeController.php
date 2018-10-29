@@ -20,9 +20,25 @@ class HomeController extends Controller
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
+     * home original do laravel
      */
+
+     /*
     public function index()
     {
         return view('home');
     }
+    */
+
+
+        /**
+         * Show the application dashboard.
+         *
+         * @return \Illuminate\Http\Response
+         * home que eu fiz
+         */
+        public function index()
+        {
+            return view('toc');
+        }
 }

@@ -139,7 +139,7 @@ class ColecaoController extends Controller
 
         }
 
-        return redirect()->action('UserController@usuario');
+        return redirect()->action('UserController@index');
     }
 
     /**
@@ -211,7 +211,7 @@ class ColecaoController extends Controller
         $users = DB::select("select * from users where id = $user");
         return view('layouts.dashboard')->with(array('u' => $user, 'users' => $users));
       }
-      return redirect()->action('HomeController@index');
+      return redirect()->action('UserController@index');
     }
 
     /**
@@ -240,7 +240,7 @@ class ColecaoController extends Controller
           } elseif (User::find($id)==null AND Auth::id()!=null) {
             return "usuário não cadastrado.";
           } else {
-            return redirect()->action('HomeController@index');
+            return redirect()->action('UserController@usuario');
           }
     }
 
@@ -263,7 +263,7 @@ class ColecaoController extends Controller
           } elseif (User::find($id)==null AND Auth::id()!=null) {
             return "usuário não cadastrado.";
           } else {
-            return redirect()->action('HomeController@index');
+            return redirect()->action('UserController@usuario');
           }
     }
 
@@ -286,7 +286,7 @@ class ColecaoController extends Controller
       } elseif (User::find($id)==null AND Auth::id()!=null) {
         return "usuário não cadastrado.";
       } else {
-        return redirect()->action('HomeController@index');
+        return redirect()->action('UserController@usuario');
       }
     }
 
@@ -309,7 +309,7 @@ class ColecaoController extends Controller
       } elseif (User::find($id)==null AND Auth::id()!=null) {
         return "usuário não cadastrado.";
       } else {
-        return redirect()->action('HomeController@index');
+        return redirect()->action('UserController@usuario');
       }
     }
 
@@ -327,7 +327,7 @@ class ColecaoController extends Controller
       and colecao.autor ilike '%$pesquisar%'");
       */
 
-$resultado = DB::select("select * from colecao where id not in(select id_colecao from usuario_colecaos where id_usuario = $usuario)");
+      $resultado = DB::select("select * from colecao where id not in(select id_colecao from usuario_colecaos where id_usuario = $usuario)");
 
 
       //$resultado = DB::select("select * from colecao where nome ilike '%$pesquisar%' OR autor ilike '%$pesquisar%'");
@@ -345,6 +345,6 @@ $resultado = DB::select("select * from colecao where id not in(select id_colecao
       $uc->id_colecao = $id;
       $uc->save();
 
-        return redirect()->action('HomeController@index');
+        return redirect()->action('UserController@index');
     }
 }

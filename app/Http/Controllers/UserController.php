@@ -28,7 +28,7 @@ class UserController extends Controller
         $users = DB::select("select * from users where id = $user");
         return view('user.perfil')->with(array('u' => $user, 'users' => $users));
       }
-      return redirect()->action('HomeController@index');
+      return redirect()->view('toc');
     }
 
     /**
@@ -93,7 +93,7 @@ class UserController extends Controller
 
         return view('user.show')->with(array('u' => $usuario, 'users' => $users, 'colecao' => $colecao));
         } else {
-          return redirect()->action('HomeController@index');
+          return redirect()->action('UserController@usuario');
         }
 
   }
@@ -117,7 +117,7 @@ class UserController extends Controller
       }
       else
       {
-        return redirect()->action('HomeController@index');
+        return redirect()->action('UserController@usuario');
       }
     }
 
@@ -173,7 +173,7 @@ class UserController extends Controller
       $users = User::find($id);
       if (empty($users)) {
         //return "Usuario não cadastrado.";
-        return redirect()->action('HomeController@index');
+        return redirect()->action('UserController@usuario');
       }
       $user = $users->id;
       $livros = DB::select("select colecao.* from colecao
@@ -195,7 +195,7 @@ class UserController extends Controller
         inner join usuario_colecaos on usuario_colecaos.id_colecao = colecao.id
         inner join users u on u.id = usuario_colecaos.id_usuario
         where u.id = $user and colecao.categoria = 4");
-        
+
       $totalLivros = count($livros);
       $totalRevistas = count($revistas);
       $totalMangas = count($mangas);
@@ -213,6 +213,6 @@ class UserController extends Controller
         $users = DB::select("select * from users where id = $user");
         return view('layouts.dashboard')->with(array('u' => $user, 'users' => $users));
       }
-      return redirect()->action('HomeController@index');
+      return redirect()->action('UserController@usuario');
     }
 }

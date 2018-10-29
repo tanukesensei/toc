@@ -11,15 +11,21 @@
 |
 */
 
+/*
 Route::get('/', function () {
     return view('welcome');
 });
+*/
+
+Route::get('/', function () {
+    return view('toc');
+}); //ok
 
 // ROTA TESTE
 //Route::get('teste', 'UserController@teste');
 
 // user rotas
-Route::get('/usuario', 'UserController@usuario');
+Route::get('/usuario', 'UserController@usuario'); // ok
 Route::get('/user/perfil', 'UserController@index'); // ok
 Route::get('/user/create', 'UserController@create');// ok
 Route::post('/user/store', 'UserController@store'); // ok
@@ -38,8 +44,8 @@ Route::get('colecao/hqs/{id}', 'ColecaoController@hqs')->where('id', '[0-9]+'); 
 Route::get('colecao/edit/{id}', 'ColecaoController@edit')->where('id', '[0-9]+'); // ok
 Route::put('colecao/update/{id}', 'ColecaoController@update')->where('id', '[0-9]+'); // ok
 Route::get('colecao/destroy/{id}', 'ColecaoController@destroy')->where('id', '[0-9]+'); // ok
-Route::get('colecao/buscar', 'ColecaoController@buscar')->name('buscar');
-Route::get('colecao/add/{id}', 'ColecaoController@adicionar');
+Route::get('colecao/buscar', 'ColecaoController@buscar')->name('buscar'); //ok
+Route::get('colecao/add/{id}', 'ColecaoController@adicionar'); //ok
 
 //Route::get('manga/create', 'MangaController@create');
 //Route::get('manga/create/{id}', 'MangaController@create');
@@ -52,4 +58,4 @@ Route::put('up/{id}', 'UserController@upload')->where('id', '[0-9]+'); // ok
 
 //Autenticação rotas
 Auth::routes(); // ok
-Route::get('/home', 'HomeController@index'); // ok
+Route::get('/home', 'UserController@index'); // ok
