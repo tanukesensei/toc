@@ -39,6 +39,6 @@ class HomeController extends Controller
          */
         public function index()
         {
-            return view('toc');
+            return redirect()->action('UserController@usuario');
         }
 }

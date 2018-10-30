@@ -23,12 +23,14 @@ class UserController extends Controller
      */
     public function index()
     {
-      if (Auth::id() != null) {
+      /*if (Auth::id() != null) {
         $user = Auth::id();// pega o id do usuário logado com muita alegria xD
         $users = DB::select("select * from users where id = $user");
         return view('user.perfil')->with(array('u' => $user, 'users' => $users));
       }
       return redirect()->view('toc');
+      */
+      return view('toc');
     }
 
     /**
@@ -64,7 +66,7 @@ class UserController extends Controller
         */
         User::create($request->all());
 
-        return redirect()->action('UserController@index');
+        return redirect()->action('UserController@usuario');
     }
 
     /**
@@ -132,7 +134,7 @@ class UserController extends Controller
     {
         $users = User::find($id);
         $users->update($request->all());
-        return redirect()->action('UserController@index');
+        return redirect()->action('UserController@usuario');
     }
 
     /**
@@ -144,7 +146,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::find($id)->delete();
-        return redirect()->action('UserController@index');
+        return redirect()->action('UserController@usuario');
     }
 
     public function foto()
@@ -164,7 +166,7 @@ class UserController extends Controller
       // O update é realizado.
       $user->update();
       // Redireciona para a index do usuários.
-      return redirect()->action('UserController@index');
+      return redirect()->action('UserController@usuario');
     }
 
     public function usuario()

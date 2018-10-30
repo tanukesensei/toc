@@ -58,4 +58,6 @@ Route::put('up/{id}', 'UserController@upload')->where('id', '[0-9]+'); // ok
 
 //Autenticação rotas
 Auth::routes(); // ok
+Route::middleware('auth')->group(function (){ //rotas que precisam de Autenticação
 Route::get('/home', 'UserController@index'); // ok
+});

@@ -139,7 +139,7 @@ class ColecaoController extends Controller
 
         }
 
-        return redirect()->action('UserController@index');
+        return redirect()->action('UserController@usuario');
     }
 
     /**
@@ -188,7 +188,7 @@ class ColecaoController extends Controller
         $path = $request->file("foto")->store("colecao");
         $c->imagem = $path;
         $c->update($request->all());
-        return redirect()->action('UserController@index');
+        return redirect()->action('UserController@usuario');
     }
 
     /**
@@ -201,7 +201,7 @@ class ColecaoController extends Controller
     {
         //
         Colecao::find($id)->delete();
-        return redirect()->action('UserController@index');
+        return redirect()->action('UserController@usuario');
     }
 
     public function dashboard()
@@ -211,7 +211,7 @@ class ColecaoController extends Controller
         $users = DB::select("select * from users where id = $user");
         return view('layouts.dashboard')->with(array('u' => $user, 'users' => $users));
       }
-      return redirect()->action('UserController@index');
+      return redirect()->action('UserController@usuario');
     }
 
     /**
@@ -329,7 +329,6 @@ class ColecaoController extends Controller
 
       $resultado = DB::select("select * from colecao where id not in(select id_colecao from usuario_colecaos where id_usuario = $usuario)");
 
-
       //$resultado = DB::select("select * from colecao where nome ilike '%$pesquisar%' OR autor ilike '%$pesquisar%'");
 
       //$usuarioColecao = DB::select("select * from usuario_colecaos");
@@ -345,6 +344,6 @@ class ColecaoController extends Controller
       $uc->id_colecao = $id;
       $uc->save();
 
-        return redirect()->action('UserController@index');
+      return redirect()->action('UserController@usuario');
     }
 }
