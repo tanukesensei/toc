@@ -13,9 +13,9 @@
 
             <input type="text" name="descricao" value="" placeholder="Descrição" class="form-control">
 
-            <input type="text" name="mediapag" value="" placeholder="Número médio de Páginas" class="form-control">
+            <input type="number" name="mediapag" value="" placeholder="Número médio de Páginas" class="form-control">
 
-            <input type="text" name="numedicoes" value="" placeholder="Número de Edições" class="form-control">
+            <input type="number" name="numedicoes" value="" placeholder="Número de Edições" class="form-control">
 
             <input type="text" name="autor" value="" placeholder="Autor" class="form-control">
 
