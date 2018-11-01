@@ -326,8 +326,11 @@ class ColecaoController extends Controller
       colecao.id != usuario_colecaos.id_colecao and usuario_colecaos.id_usuario != $usuario
       and colecao.autor ilike '%$pesquisar%'");
       */
+      
+      $resultado = DB::select("select * from colecao  where usuario not in (select  id_usuario from usuario_colecaos where id_usuario = $usuario)
+      and nome  ilike '%$pesquisar%' or autor ilike '%$pesquisar%'");
 
-      $resultado = DB::select("select * from colecao where id not in(select id_colecao from usuario_colecaos where id_usuario = $usuario)");
+      //$resultado = DB::select("select * from colecao where id not in(select id_colecao from usuario_colecaos where id_usuario = $usuario)");
 
       //$resultado = DB::select("select * from colecao where nome ilike '%$pesquisar%' OR autor ilike '%$pesquisar%'");
 
