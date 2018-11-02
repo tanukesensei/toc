@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UsuarioColecao extends Migration
+class UsuarioColecaos extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class UsuarioColecao extends Migration
      */
     public function up()
     {
-        Schema::create('usuario_colecao', function (Blueprint $table) {
-          $table->integer('usuario_id');
-          $table->integer('colecao_id');
+        Schema::create('usuario_colecaos', function (Blueprint $table) {
+          $table->increments('id')->primary('id');
+          $table->unsignedInteger('usuario_id');
+          $table->unsignedInteger('colecao_id');
           $table->foreign('usuario_id')->references('id')->on('users')->onDelete('cascade');
-          
+          $table->foreign('colecao_id')->references('id')->on('colecao')->onDelete('cascade');
         });
     }
 
@@ -28,6 +29,6 @@ class UsuarioColecao extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('usuario_colecaos');
     }
 }
