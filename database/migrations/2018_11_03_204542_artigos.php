@@ -14,8 +14,8 @@ class Artigos extends Migration
     public function up()
     {
         Schema::create('artigos', function (Blueprint $table) {
-          $table->increments('id')->primary('id');
-          $table->string('artigos', 300);
+          $table->increments('id');
+          $table->string('artigos', 300)->nullable();
           $table->unsignedInteger('id_revista');
           $table->foreign('id_revista')->references('id')->on('revistas')->onDelete('cascade')->onUpdate('cascade');
         });
@@ -28,6 +28,6 @@ class Artigos extends Migration
      */
     public function down()
     {
-        Schema::drop('artigos');
+        Schema::dropIfExists('artigos');
     }
 }
