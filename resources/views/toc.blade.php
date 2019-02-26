@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-
-@if (Auth::check())
-  
-@endif
 <html lang="en">
 
   <head>

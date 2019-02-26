@@ -71,7 +71,7 @@
   		    -->
 
   			<div class="logo">
-  				<a href="http://www.creative-tim.com" class="simple-text">
+  				<a href="/usuario" class="simple-text">
   					TOC
   				</a>
   			</div>
@@ -152,7 +152,15 @@
   									{{ Auth::user()->name }}
   								</a>
   							</li>
-
+								<li>
+									<i class="material-icons">chat</i>
+								</li>
+								<li>
+									<i class="material-icons">comment</i>
+								</li>
+								<li>
+									<i class="material-icons">person_pin</i>
+								</li>
   							<li>
   								<a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
   	 							   <i class="material-icons">keyboard_arrow_down</i>

@@ -18,11 +18,22 @@
                 	<div class="card" data-background="image" data-src="{{ Storage::url($c->imagem) }}" alt="{{$c->imagem}}">
                     <div class="header">
                         <div class="category"> <!--aqui começa o que falta no resultado. -->
+													<!-- A class category é onde aparece fica o botão laranja -->
                             <a href="/colecao/edit/{{ $c->id }}">
                             	<h6 class="label label-danger">
                             		<i class="material-icons">settings_applications</i>
                             	</h6>
                             </a>
+<!-- pin_person começa aqui-->
+														<a href="#">
+															<h6 class="label label-success" id="person_pin">
+
+																<i class="material-icons">person_pin</i>
+															</h6>
+														</a>
+
+<!--pin_person termina aqui-->
+
                         </div> <!-- aqui termina o que falta no resultado. -->
                     </div>
 

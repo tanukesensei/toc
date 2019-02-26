@@ -26,6 +26,13 @@
 																		<i class="material-icons">library_add</i>
 																	</h6>
 																</a>
+<!-- pin_person começa aqui-->
+																<a href="#">
+																	<h6 class="label label-success" id="person_pin">
+																		<i class="material-icons">person_pin</i>
+																	</h6>
+																</a>
+<!--pin_person termina aqui-->
 			                        </div>
 			                    </div>
 
