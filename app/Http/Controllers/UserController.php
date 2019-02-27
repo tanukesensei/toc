@@ -217,4 +217,21 @@ class UserController extends Controller
       }
       return redirect()->action('UserController@usuario');
     }
+
+    public function discord($id)
+    {
+      if (Auth::id() != null) {
+        $user = Auth::id();
+
+        $users = User::find($id);
+          if (empty($users)) {
+        	   return "Usuário não cadastrado.";
+           }
+             return view('user.userDiscord')->with(array('u'=>$user, 'users' => $users));
+           }
+           else
+           {
+ 	           return redirect()->action('UserController@usuario');
+           }
+    }
 }

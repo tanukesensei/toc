@@ -50,7 +50,8 @@ Route::get('colecao/add/{id}', 'ColecaoController@adicionar'); //ok
 //Route::get('manga/create', 'MangaController@create');
 //Route::get('manga/create/{id}', 'MangaController@create');
 
-
+// Mensagens
+Route::get('/user/discord/{id}', 'UserController@discord');
 
 // upload rotas
 Route::get('upload', 'UserController@foto'); // ok

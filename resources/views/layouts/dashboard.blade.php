@@ -152,24 +152,26 @@
   									{{ Auth::user()->name }}
   								</a>
   							</li>
-								<li>
-									<i class="material-icons">chat</i>
-								</li>
-								<li>
-									<i class="material-icons">comment</i>
-								</li>
-								<li>
-									<i class="material-icons">person_pin</i>
-								</li>
+
+
   							<li>
   								<a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
   	 							   <i class="material-icons">keyboard_arrow_down</i>
   	 							   <p class="hidden-lg hidden-md">Profile</p>
   	 						   </a>
   								 <ul class="dropdown-menu">
-  								 <li>
-										 <a href="/user/edit/{{$u}}">
-										 <i class="material-icons">settings</i> Editar Perfil</a></li>
+										 <li>
+											 <a href="/user/discord/{{$u}}">
+											 	<i class="material-icons">comment</i>
+													Discod
+											</a>
+										 </li>
+									   <li>
+										 	<a href="/user/edit/{{$u}}">
+										 		<i class="material-icons">settings</i>
+													Editar Perfil
+									 	 	</a>
+									   </li>
   								<!-- <li><a href="#">You have 5 new tasks</a></li>
   								 <li><a href="#">You're now friend with Andrew</a></li>
   								 <li><a href="#">Another Notification</a></li>-->
