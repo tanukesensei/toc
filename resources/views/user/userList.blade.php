@@ -34,6 +34,15 @@
           </div>
 
 <!-- End do body ACIMA-->
+
+
+//teste do Chat
+
+
+
+
+
+// fim do teste do chat
         </div>
       </div>
     </div>

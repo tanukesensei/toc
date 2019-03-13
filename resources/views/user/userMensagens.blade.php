@@ -1,26 +1,21 @@
 @extends('layouts.dashboard')
 
 @section('content')
-
 <div class="content">
   <div class="container-fluid">
     <div class="row">
-      <div id="page-wrap">
+        <div class="card">
+		        <div class="card-header card-header-primary card-colecao" color="white" ><h4>Digite sua mensagem:</h4></div>
 
-          <h2>jQuery/PHP Chat</h2>
+              <form class="form-group" action="#" method="post">
+                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                <textarea name="name" rows="6" cols="60"></textarea>
+                <button type="submit" name="button" class="btn btn-primary">Enviar</button>
+              </form>
 
-          <p id="name-area"></p>
-
-          <div id="chat-wrap"><div id="chat-area"></div></div>
-
-          <form id="send-message-area">
-              <p>Your message: </p>
-              <textarea id="sendie" maxlength = '100'></textarea>
-          </form>
-
+          </div>
       </div>
     </div>
-  </div>
-</div>
 
+</div>
 @endsection
