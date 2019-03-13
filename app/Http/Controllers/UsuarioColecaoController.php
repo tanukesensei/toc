@@ -25,4 +25,17 @@ class UsuarioColecaoController extends Controller
       $uc->id_colecao = $id_colecao;
       $uc->save();
     }
+
+    public function lista_usuarios($id_colecao)
+    {
+      $id_usuario = Auth::id();
+      $user = $id_usuario;
+      $users = User::find($user);
+      $id_colecao = $id_colecao;
+      //$lista = DB::select("select * from usuario_colecaos where id_colecao = $id_colecao and id_usuario != $id_usuario");
+
+      $lista = DB::select("select users.* from users join usuario_colecaos on usuario_colecaos.id_usuario=users.id and usuario_colecaos.id_usuario!=$id_usuario and usuario_colecaos.id_colecao=$id_colecao");
+
+      return view('user.userList')->with(array('u' => $user, 'users' => $users, 'lista' => $lista));
+    }
 }

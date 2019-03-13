@@ -3,14 +3,14 @@
 namespace toc\Http\Controllers;
 
 use toc\User; // Model
-use toc\Editora; // Model
+use toc\Categoria; // Model
 use Illuminate\Http\Request;
-use toc\Http\Requests\UserRequest;
-use toc\Http\Requests\EditoraRequest;
 use Illuminate\Support\Facades\DB; // acesso ao sql
 use Illuminate\Support\Facades\Auth; // acesso ao sql
+use toc\Http\Requests\UserRequest;
+use toc\Http\Requests\CategoriaRequest; // Request
 
-class EditoraController extends Controller
+class CategoriaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -29,19 +29,19 @@ class EditoraController extends Controller
      */
     public function create()
     {
-      if (Auth::id() != null) {
-        $user = Auth::id();
-        $users = User::find($user);
+        if (Auth::id() != null) {
+          $user = Auth::id();
+          $users = User::find($user);
 
-        if (empty($users)) {
-          return "Usuário não cadastrado.";
+          if (empty($users)) {
+            return "Usuário não cadastrado.";
+          }
+
+          return view('categoria.categCad')->with(array('u' => $user, 'users' => $users));
+
+        } else {
+        return redirect()->action('UserController@usuario');
         }
-
-        return view('editora.editoCad')->with(array('u' => $user, 'users' => $users));
-
-      } else {
-      return redirect()->action('UserController@usuario');
-      }
     }
 
     /**
@@ -50,13 +50,14 @@ class EditoraController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(EditoraRequest $request)
+    public function store(CategoriaRequest $request)
     {
-      $editora = new Editora;
-      $editora->nome = $request->nome;
-      $editora->save();
+        $categoria = new Categoria;
+        $categoria->nome = $request->nome;
+        //dd($categoria);
+        $categoria->save();
 
-      return redirect()->action('UserController@usuario');
+        return redirect()->action('UserController@usuario');
     }
 
     /**

@@ -89,7 +89,7 @@ class ColecaoController extends Controller
         if($categoria == 1){
           $livros = new Livro();
           $livros->titulo = $colecao->nome;
-          $livros->sinopse = $colecao->descricao;
+          $livros->descricao = $colecao->descricao;
           $livros->numeropag = $colecao->mediapag;
           //$livros->numeroedicao = $colecao->numedicoes;
           $livros->isbn = $colecao->isbn;
@@ -326,7 +326,7 @@ class ColecaoController extends Controller
       colecao.id != usuario_colecaos.id_colecao and usuario_colecaos.id_usuario != $usuario
       and colecao.autor ilike '%$pesquisar%'");
       */
-      
+
       $resultado = DB::select("select * from colecao  where usuario not in (select  id_usuario from usuario_colecaos where id_usuario = $usuario)
       and nome  ilike '%$pesquisar%' or autor ilike '%$pesquisar%'");
 

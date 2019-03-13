@@ -24,7 +24,7 @@
                             	</h6>
                             </a>
 <!-- pin_person começa aqui-->
-													<a href="#">
+													<a href="/colecao/usuarios/{{ $c->id }}">
 														<h6 class="label label-success" id="person_pin">
 															<i class="material-icons">person_pin</i>
   													</h6>

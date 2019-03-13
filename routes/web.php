@@ -47,11 +47,19 @@ Route::get('colecao/destroy/{id}', 'ColecaoController@destroy')->where('id', '[0
 Route::get('colecao/buscar', 'ColecaoController@buscar')->name('buscar'); //ok
 Route::get('colecao/add/{id}', 'ColecaoController@adicionar'); //ok
 
-//Route::get('manga/create', 'MangaController@create');
-//Route::get('manga/create/{id}', 'MangaController@create');
+Route::get('colecao/usuarios/{id}', 'UsuarioColecaoController@lista_usuarios'); //ok
 
-// Mensagens
-Route::get('/user/discord/{id}', 'UserController@discord');
+// Categoria rotas
+Route::get('categoria/create', 'CategoriaController@create'); //ok
+Route::post('categoria/store', 'CategoriaController@store'); //ok
+
+// Editora rotas
+Route::get('editora/create', 'EditoraController@create'); //ok
+Route::post('editora/store', 'EditoraController@store'); //ok
+
+// Mensagens rotas
+Route::get('/user/discord/{id}', 'UserController@discord'); //ok
+Route::get('/user/mensagens/{id}', 'UserController@mensagens');
 
 // upload rotas
 Route::get('upload', 'UserController@foto'); // ok
