@@ -24,7 +24,7 @@
                     <td>{{ $L->name }}</td>
                     <td><a href="/user/show/{{$L->id}}">Conhecer</a></td>
                     <td>
-                      <a href="/user/mensagens/{{$L->id}}">Conversar</a>
+                      <a href="/mensagem/create/{{$L->id}}">Conversar</a>
                     </td>
                   </tr>
                   @endforeach

@@ -244,7 +244,7 @@ class UserController extends Controller
           if (empty($users)) {
              return "Usuário não cadastrado.";
            }
-             return view('user.userMensagens')->with(array('u'=>$user, 'users' => $users));
+             return view('user.userMensagens')->with(array('u'=>$user, 'users' => $users, 'destinatario'=>$id_usuario));
            }
            else
            {

@@ -59,7 +59,9 @@ Route::post('editora/store', 'EditoraController@store'); //ok
 
 // Mensagens rotas
 Route::get('/user/discord/{id}', 'UserController@discord'); //ok
-Route::get('/user/mensagens/{id}', 'UserController@mensagens');
+//Route::get('/user/mensagens/{id}', 'UserController@mensagens'); //ok
+Route::get('mensagem/create/{id}', 'MensagemController@create'); //ok
+Route::post('/mensagem/store', 'MensagemController@store');
 
 // upload rotas
 Route::get('upload', 'UserController@foto'); // ok

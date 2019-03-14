@@ -16,7 +16,7 @@ class Chat extends Model
   protected $fillable = array('from', 'to', 'message',
    'created_at', 'recd');
 
-  protected $guarded = ['id'];
+  protected $guarded = ['id_conversa'];
 
   public $timestamps = false;
 }
