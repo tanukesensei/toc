@@ -6,6 +6,7 @@ use toc\Autor; // Model
 use toc\Colecao; // Model
 use toc\Editora;
 use toc\Manga; // Model
+use toc\Mensagem; // Model
 use toc\User; // Model
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; // acesso ao sql
@@ -235,20 +236,21 @@ class UserController extends Controller
            }
     }
 
-    public function mensagens($id_usuario)
-    {
-      if (Auth::id() != null) {
-        $user = Auth::id();
 
-        $users = User::find($user);
-          if (empty($users)) {
-             return "Usuário não cadastrado.";
-           }
-             return view('user.userMensagens')->with(array('u'=>$user, 'users' => $users, 'destinatario'=>$id_usuario));
-           }
-           else
-           {
-             return redirect()->action('UserController@usuario');
-           }
-    }
+public function check_mensagem()
+{
+  $id_destinatario = Auth::id();
+  //Mensagem Atual
+  $MA = DB::select("select id from mensagens where id_destinatario = //$id_destinatario order by id desc");
+
+  dd  ($MA);
+//Ultima Mensagem
+  $UM;
+
+  if ($MA != $UM) {
+    $UM = $MA;
+  }
+}
+
+
 }

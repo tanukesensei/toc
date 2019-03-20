@@ -145,6 +145,26 @@
   					</div>
   					<div class="collapse navbar-collapse">
   						<ul class="nav navbar-nav navbar-right">
+
+
+<!-- começo das notificações QUE AINDA NÃO TA NADA PRONTA SÓ TA JOGADA AQUI POR ENQUANTO -->
+								<li class="nav-item dropdown">
+								                <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								                  <i class="material-icons">notifications</i>
+								                  <span class="notification">5</span>
+								                </a>
+								                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+								                  <a class="dropdown-item" href="#">Mike John responded to your email</a>
+								                  <a class="dropdown-item" href="#">You have 5 new tasks</a>
+								                  <a class="dropdown-item" href="#">You're now friend with Andrew</a>
+								                  <a class="dropdown-item" href="#">Another Notification</a>
+								                  <a class="dropdown-item" href="#">Another One</a>
+								                </div>
+								              </li>
+<!-- fim das notificações -->
+
+
+
   							<li>
   								<a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
   									<i class="material-icons">person</i>

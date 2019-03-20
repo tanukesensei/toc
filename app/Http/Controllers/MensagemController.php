@@ -26,7 +26,7 @@ class MensagemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id_usuario)
+    public function create($id_destinatario)
     {
       if (Auth::id() != null) {
         $user = Auth::id();
@@ -35,7 +35,10 @@ class MensagemController extends Controller
           if (empty($users)) {
              return "Usuário não cadastrado.";
            }
-             return view('user.userMensagens')->with(array('u'=>$user, 'users' => $users, 'destinatario'=>$id_usuario));
+
+           $conversa = DB::select("select mensagens from mensagens where id_destinatario = $id_destinatario and id_usuario = $user order by id desc");
+
+             return view('user.userMensagens')->with(array('u'=>$user, 'users' => $users, 'destinatario'=>$id_destinatario, 'chat' => $conversa));
            }
            else
            {
