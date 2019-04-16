@@ -115,12 +115,13 @@
   	                        <p>+ Coleções</p>
   	                    </a>
   	                </li>
-  									<li>
+  						<!--	<li>
   	                    <a href="#">
   	                        <i class="material-icons">search</i>
   	                        <p>Pesquisar</p>
   	                    </a>
   	                </li>
+							-->
   	            </ul>
   	    	</div>
   		</div>
@@ -151,7 +152,7 @@
 								<li class="nav-item dropdown">
 								                <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								                  <i class="material-icons">notifications</i>
-								                  <span class="notification">5</span>
+																	<!-- <span class="notification"> 5 </span> -->
 								                </a>
 								                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
 								                  <a class="dropdown-item" href="#">Mike John responded to your email</a>
@@ -183,7 +184,7 @@
 										 <li>
 											 <a href="/user/discord/{{$u}}">
 											 	<i class="material-icons">comment</i>
-													Discod
+													Discord
 											</a>
 										 </li>
 									   <li>
@@ -238,14 +239,14 @@
   	                    <ul>
   	                        <li>
   	                            <a href="#">
-  	                                Home
+  	                                <!--Home-->
   	                            </a>
   	                        </li>
 
   	                    </ul>
   	                </nav>
   	                <p class="copyright pull-right">
-  	                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+  	                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="https://github.com/tanukesensei">Luan Vitola</a>, todos os direitos reservados.
   	                </p>
   	            </div>
   	        </footer>

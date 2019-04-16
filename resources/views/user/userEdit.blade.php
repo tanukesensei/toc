@@ -1,11 +1,18 @@
 @extends('layouts.dashboard')
 
 @section('content')
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-4 col-sm-offset-4">
-          <h3>Edite suas informações</h3>
-          <form action="{{action('UserController@update', $users->id)}}" method="post" class="form-group">
+<class class="content">
+  <div class="container-fluid" style="padding-top: 75px;">
+    <div class="row2">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header card-header-primary card-colecao">
+            <h4 class="card-title">Edite suas informações</h4>
+          </div>
+
+          <div class="card-body">
+
+            <form action="{{action('UserController@update', $users->id)}}" method="post" class="form-group">
             {!! method_field('put') !!}
 
             <input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -68,7 +75,12 @@
               <button type="submit" class="btn btn-primary btn-block" name="button">Atualizar</button>
 
           </form>
+
+          </div>
+
         </div>
       </div>
     </div>
+  </div>
+</class>
 @endsection
