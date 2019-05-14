@@ -12,6 +12,7 @@ use toc\Manga; // Model
 use toc\Revista; // Model
 use toc\User; // Model
 use toc\UsuarioColecao; // Model
+//use toc\Volumes; // Model
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; // acesso ao sql
 use Illuminate\Support\Facades\Auth; // acesso ao sql
@@ -25,6 +26,7 @@ use toc\Http\Requests\MangaRequest; // Request
 use toc\Http\Requests\RevistaRequest; // Request
 use toc\Http\Requests\UserRequest; // Request
 use toc\Http\Requests\UsuarioColecaoRequest; // Request
+//use toc\Http\Requests\VolumesRequest; // Request
 
 class ColecaoController extends Controller
 {
@@ -349,4 +351,5 @@ class ColecaoController extends Controller
 
       return redirect()->action('UserController@usuario');
     }
+
 }

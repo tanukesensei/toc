@@ -39,7 +39,7 @@
                     <div class="content">
                         <h4 class="title title-uppercase">
                         	<!--  Trocar por {{$c->id }} quando a página de exibir capas estiver pronta. -->
-                            <a href="#">{{$c->nome }}</a>
+                            <a href="/volumes/index/{{ $c->id }}">{{$c->nome }}</a>
                         </h4>
                 	<p class="description">{{$c->descricao}}</p>
                     </div>

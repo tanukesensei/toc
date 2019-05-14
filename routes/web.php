@@ -47,6 +47,14 @@ Route::get('colecao/destroy/{id}', 'ColecaoController@destroy')->where('id', '[0
 Route::get('colecao/buscar', 'ColecaoController@buscar')->name('buscar'); //ok
 Route::get('colecao/add/{id}', 'ColecaoController@adicionar'); //ok
 
+//Volumes
+Route::get('volumes/index/{id}', 'VolumeController@index')->where('id', '[0-9]'); // ok
+Route::get('volumes/create/{id}', 'VolumeController@create')->where('id','[0-9]'); // ok
+route::post('volumes/store', 'VolumeController@store');
+
+
+
+
 Route::get('colecao/usuarios/{id}', 'UsuarioColecaoController@lista_usuarios'); //ok
 
 // Categoria rotas
@@ -62,6 +70,7 @@ Route::get('/user/discord/{id}', 'UserController@discord'); //ok
 //Route::get('/user/mensagens/{id}', 'UserController@mensagens'); //ok
 Route::get('mensagem/create/{id}', 'MensagemController@create'); //ok
 Route::post('/mensagem/store', 'MensagemController@store');
+
 
 // upload rotas
 Route::get('upload', 'UserController@foto'); // ok
