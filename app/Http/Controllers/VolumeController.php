@@ -21,14 +21,25 @@ class VolumeController extends Controller
      */
     public function index($id)
     {
-        $id_usuario = auth::id();
-        $id_colecao = $id;
+      $id_usuario = auth::id();
+      $id_colecao = $id;
 
-        $resultados = DB::select("select numedicoes from colecao where id = $id_colecao");
-        $resultado = $resultados[0];
-        $n = $resultado->numedicoes;
+      $resultados = DB::select("select numedicoes from colecao where id = $id_colecao");
+      $resultado = $resultados[0];
+      $n = $resultado->numedicoes;
+
+      $total = DB::select("select count(*) from volumes where id_colecao = $id_colecao and id_usuario = $id_usuario");
+      //dd($total);
+
+      if ($total > 0) {
+          $infos = DB::select("select * from volumes where id_colecao = $id_colecao and id_usuario = $id_usuario ");
+          //dd($infos);
+          return view('volumes.volColecao')->with(array('u' => $id_usuario, 'col' => $id_colecao, 'volumes' => $n, 'infos' => $infos));
+
+      } else {
 
         return view('volumes.volColecao')->with(array('u' => $id_usuario, 'col' => $id_colecao, 'volumes' => $n));
+      }
     }
 
     /**
@@ -74,7 +85,12 @@ class VolumeController extends Controller
      */
     public function show($id)
     {
-        //
+        //$id_volume = $id;
+        $id_usuario = auth::id();
+        //$volumes = DB::select("select * from volumes where id = $id_volume");
+        $volumes = Volumes::find($id);
+         //dd($volumes);
+        return view('volumes.volEdit')->with(array('u' => $id_usuario, 'volumes' => $volumes));
     }
 
     /**
@@ -97,7 +113,11 @@ class VolumeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $v = Volumes::find($id);
+        $path = $request->file('capa')->store('capas');
+        $v->imagem = $path;
+        $v->update($request->all());
+        return redirect()->action('VolumeController@index', ['id' => $v->id_colecao]);
     }
 
     /**

@@ -49,8 +49,10 @@ Route::get('colecao/add/{id}', 'ColecaoController@adicionar'); //ok
 
 //Volumes
 Route::get('volumes/index/{id}', 'VolumeController@index')->where('id', '[0-9]'); // ok
-Route::get('volumes/create/{id}', 'VolumeController@create')->where('id','[0-9]'); // ok
+Route::get('volumes/create/{id}', 'VolumeController@create')->where('id', '[0-9]'); // ok
 route::post('volumes/store', 'VolumeController@store');
+Route::get('volumes/show/{id}', 'VolumeController@show')->where('id', '[0-9]');
+Route::put('volumes/update/{id}', 'VolumeController@update');
 
 
 
