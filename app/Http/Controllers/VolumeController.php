@@ -32,7 +32,7 @@ class VolumeController extends Controller
       //dd($total);
 
       if ($total > 0) {
-          $infos = DB::select("select * from volumes where id_colecao = $id_colecao and id_usuario = $id_usuario ");
+          $infos = DB::select("select * from volumes where id_colecao = $id_colecao and id_usuario = $id_usuario order by id asc");
           //dd($infos);
           return view('volumes.volColecao')->with(array('u' => $id_usuario, 'col' => $id_colecao, 'volumes' => $n, 'infos' => $infos));
 

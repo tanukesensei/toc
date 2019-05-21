@@ -8,6 +8,7 @@ use toc\Editora;
 use toc\Manga; // Model
 use toc\Mensagem; // Model
 use toc\User; // Model
+use toc\Verificacao; // Model
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; // acesso ao sql
 use Illuminate\Support\Facades\Auth; // acesso ao sql
@@ -214,11 +215,24 @@ class UserController extends Controller
       if (Auth::id() != null) {
         $user = Auth::id();// pega o id do usuário logado com muita alegria xD
         $users = DB::select("select * from users where id = $user");
-        return view('layouts.dashboard')->with(array('u' => $user, 'users' => $users));
+        $mudanca = DB::select("select count(verificacao.*) from verificacao inner join usuario_colecaos uc on uc.id_usuario=$users inner join colecao c on c.usuario = uc.id_usuario");
+
+        return view('layouts.dashboard')->with(array('u' => $user, 'users' => $users, 'm' => $mudanca));
       }
       return redirect()->action('UserController@usuario');
     }
 
+/*  totalmente funcionar esse aqui
+public function dashboard()
+{
+  if (Auth::id() != null) {
+    $user = Auth::id();// pega o id do usuário logado com muita alegria xD
+    $users = DB::select("select * from users where id = $user");
+    return view('layouts.dashboard')->with(array('u' => $user, 'users' => $users));
+  }
+  return redirect()->action('UserController@usuario');
+}
+*/
     public function discord($id)
     {
       if (Auth::id() != null) {

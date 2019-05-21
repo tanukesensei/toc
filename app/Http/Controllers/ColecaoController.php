@@ -12,7 +12,7 @@ use toc\Manga; // Model
 use toc\Revista; // Model
 use toc\User; // Model
 use toc\UsuarioColecao; // Model
-//use toc\Volumes; // Model
+use toc\Verificacao; // Model
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; // acesso ao sql
 use Illuminate\Support\Facades\Auth; // acesso ao sql
@@ -25,8 +25,8 @@ use toc\Http\Requests\LivroRequest; // Request
 use toc\Http\Requests\MangaRequest; // Request
 use toc\Http\Requests\RevistaRequest; // Request
 use toc\Http\Requests\UserRequest; // Request
+use toc\Http\Requests\verificacaoRequest; // Request
 use toc\Http\Requests\UsuarioColecaoRequest; // Request
-//use toc\Http\Requests\VolumesRequest; // Request
 
 class ColecaoController extends Controller
 {
@@ -185,12 +185,46 @@ class ColecaoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // totalmente funcional
+      $verificacao = DB::select("select count(id_usuario) from usuario_colecaos where id_colecao = $id");
+
+      if ($verificacao > 2) { // se 3 ou mais pessoas tiverem a mesma coleção ele salva na tabela  verificação.
+        $ver = new Verificacao();
+        $ver->id_colecao = $request->id;
+        $ver->nome = $request->nome;
+        $ver->descricao = $request->descricao;
+        $ver->mediapag = $request->mediapag;
+        $ver->numedicoes = $request->numedicoes;
+        $ver->autor = $request->autor;
+        $ver->categoria = $request->categoria;
+        $ver->editora = $request->editora;
+        $ver->isbn = $request->isbn;
+        $ver->usuario = $request->usuario;
+        $ver->imagem = $request->file("foto")->store("colecao");
+        $ver->save();
+
+/*
+        $avisar = DB::select("select * from usuario_colecaos where id_colecao = $id");
+        dd($avisar);
+*/
+        return redirect()->action('UserController@usuario');
+      }
+       else
+      {
         $c = Colecao::find($id);
         $path = $request->file("foto")->store("colecao");
         $c->imagem = $path;
         $c->update($request->all());
         return redirect()->action('UserController@usuario');
+      }
+
+        // totalmente funcional
+        /*
+        $c = Colecao::find($id);
+        $path = $request->file("foto")->store("colecao");
+        $c->imagem = $path;
+        $c->update($request->all());
+        return redirect()->action('UserController@usuario');
+        */
     }
 
     /**
@@ -351,5 +385,4 @@ class ColecaoController extends Controller
 
       return redirect()->action('UserController@usuario');
     }
-
 }

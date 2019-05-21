@@ -18,7 +18,7 @@
                   <!-- COMEÇO DO FORM -->
               <input type="hidden" name="_token" value="{{csrf_token()}}">
 
-              <input type="text" name="nome" placeholder="Categoria Ex: Livro, Mangás, etc..." class="form-control">
+              <input type="text" name="nome" placeholder="Categoria Ex: Livros, Histórias em Quadrinhos, Mangás, Revistas" class="form-control">
 
               <input type="submit" name="enviar" value="Enviar" class="btn btn-primary">
 

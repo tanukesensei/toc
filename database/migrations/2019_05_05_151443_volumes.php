@@ -32,6 +32,6 @@ class Volumes extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('volumes');
     }
 }
