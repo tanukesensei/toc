@@ -3,6 +3,8 @@
 namespace toc\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use toc\Colecao;
+use toc\Observers\ColecaoObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Colecao::observe(ColecaoObserver::class);
     }
 
     /**
@@ -23,6 +25,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        
     }
 }
