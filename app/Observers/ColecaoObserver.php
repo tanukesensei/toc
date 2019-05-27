@@ -13,6 +13,7 @@ class ColecaoObserver
 
     protected $users = [];
 
+    // Mudar depois de finalizado, está 1 apenas para testes.
     const NUMERO_USUARIO_NOTIFICAR = 1;
 
     public function created(Colecao $colecao)
@@ -29,7 +30,7 @@ class ColecaoObserver
             $this->getUserToNotify();
 
             foreach ($this->users as $user) {
-                dispatch(new SendNotificationColecao($user));
+                dispatch(new SendNotificationColecao($user, $colecao));
             }
         }
     }

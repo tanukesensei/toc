@@ -185,10 +185,11 @@ class ColecaoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         $c = Colecao::find($id);
         $path = $request->file("foto")->store("colecao");
         $c->imagem = $path;
-        dd($c->update($request->all()));
+        $c->update($request->all());
 
         return redirect()->action('UserController@usuario');
     }

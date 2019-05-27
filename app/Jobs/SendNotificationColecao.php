@@ -3,25 +3,31 @@
 namespace toc\Jobs;
 
 use toc\User;
+use toc\Colecao;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use toc\Notifications\updateColecao;
 
 class SendNotificationColecao implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     protected $user;
+
+    protected $colecao;
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct($user, $colecao)
     {
         $this->user = $user;
+
+        $this->colecao = $colecao;
     }
 
     /**
@@ -30,8 +36,13 @@ class SendNotificationColecao implements ShouldQueue
      * @return void
      */
     public function handle()
-    {
-        
+    {   
+        $this->user->notify(new updateColecao([
+            'id' => $this->colecao->id,
+            'message' => sprintf('A coleção %s foi atualizada', $this->colecao->nome)
+        ]));
+
+        // Luan, qual a finalidade de Verificacao?
         // $ver = new Verificacao();
         // $ver->id_colecao = $request->id;
         // $ver->nome = $request->nome;
