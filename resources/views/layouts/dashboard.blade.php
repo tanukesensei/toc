@@ -156,7 +156,7 @@
 								                </a>
 								                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
 								                	@foreach($notify_user_messages as $message)
-								                  <a class="dropdown-item" href="#">{{ $message['data'] }}</a>
+								                  <a class="dropdown-item" href="{{ url('/user/read-notification/' . $message['id'] ) }}">{{ $message['data'] }}</a>
 																	@endforeach
 																</div>
 								              </li>

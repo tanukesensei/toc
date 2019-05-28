@@ -72,6 +72,7 @@ Route::get('/user/discord/{id}', 'UserController@discord'); //ok
 //Route::get('/user/mensagens/{id}', 'UserController@mensagens'); //ok
 Route::get('mensagem/create/{id}', 'MensagemController@create'); //ok
 Route::post('/mensagem/store', 'MensagemController@store');
+Route::get('user/read-notification/{id}', 'UserController@readNotification');
 
 
 // upload rotas

@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth; // acesso ao sql
 use toc\Http\Requests\MangaRequest;
 use toc\Http\Requests\ColecaoRequest; //Request
 use toc\Http\Requests\UserRequest; // Request
+use Illuminate\Routing\Redirector;
 
 class UserController extends Controller
 {
@@ -250,6 +251,18 @@ public function dashboard()
            }
     }
 
+public function readNotification($id)
+{
+  User::whereId(Auth::id())
+    ->first()
+    ->notifications()
+    ->where('id', $id)
+    ->first()->update([
+      'read_at' => date('Y-m-d H:i:s')
+    ]);
+
+    return redirect()->back();
+}
 
 public function check_mensagem()
 {
