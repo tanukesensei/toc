@@ -185,46 +185,13 @@ class ColecaoController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $verificacao = DB::select("select count(id_usuario) from usuario_colecaos where id_colecao = $id");
-
-      if ($verificacao > 2) { // se 3 ou mais pessoas tiverem a mesma coleção ele salva na tabela  verificação.
-        $ver = new Verificacao();
-        $ver->id_colecao = $request->id;
-        $ver->nome = $request->nome;
-        $ver->descricao = $request->descricao;
-        $ver->mediapag = $request->mediapag;
-        $ver->numedicoes = $request->numedicoes;
-        $ver->autor = $request->autor;
-        $ver->categoria = $request->categoria;
-        $ver->editora = $request->editora;
-        $ver->isbn = $request->isbn;
-        $ver->usuario = $request->usuario;
-        $ver->imagem = $request->file("foto")->store("colecao");
-        $ver->save();
-
-/*
-        $avisar = DB::select("select * from usuario_colecaos where id_colecao = $id");
-        dd($avisar);
-*/
-        return redirect()->action('UserController@usuario');
-      }
-       else
-      {
+        
         $c = Colecao::find($id);
         $path = $request->file("foto")->store("colecao");
         $c->imagem = $path;
         $c->update($request->all());
-        return redirect()->action('UserController@usuario');
-      }
 
-        // totalmente funcional
-        /*
-        $c = Colecao::find($id);
-        $path = $request->file("foto")->store("colecao");
-        $c->imagem = $path;
-        $c->update($request->all());
         return redirect()->action('UserController@usuario');
-        */
     }
 
     /**

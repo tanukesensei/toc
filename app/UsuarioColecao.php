@@ -13,4 +13,14 @@ class UsuarioColecao extends Model
     protected $guarded = ['id'];
 
     public $timestamps = false;
+
+    public function usuarios()
+    {
+        return $this->belongsToMany(
+            'toc\User', 
+            'usuario_colecaos', 
+            'id_colecao', 
+            'id_usuario'
+        );
+    }
 }
