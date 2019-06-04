@@ -26,18 +26,25 @@ class HeaderComposer
      */
     public function compose(View $view)
     {
-        $notifications = User::whereId(Auth::id())->first()->unreadNotifications;
-
         $messages = [];
 
-        foreach ($notifications as $message) {
+        $notifications = [];
 
-            $messages[] = [
-                'id' => $message->id,
-                'data' => htmlspecialchars($message->data['message'])
-            ];
+        $userId =  Auth::id();
+
+        if(!is_null($userId)) {
+
+            $notifications = User::whereId($userId)->first()->unreadNotifications;
+
+            foreach ($notifications as $message) {
+
+                $messages[] = [
+                    'id' => $message->id,
+                    'data' => htmlspecialchars($message->data['message'])
+                ];
+            }
         }
-    
+        
         $view->with([
             'count_notify_user' => count($notifications),
             'notify_user_messages' => $messages
