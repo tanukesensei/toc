@@ -288,7 +288,7 @@
                     <!--Category-->
                   </div>
                   <div class="project-name">
-                    Satisfação!
+                    Organização
                   </div>
                 </div>
               </div>
