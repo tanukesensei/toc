@@ -165,7 +165,7 @@
 
 
   							<li>
-  								<a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
+  								<a href="/user/show/{{$u}}" class="dropdown-toggle" data-toggle="dropdown">
   									<i class="material-icons">person</i>
   									<p class="hidden-lg hidden-md">Dashboard</p>
   									{{ Auth::user()->name }}
